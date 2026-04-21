@@ -10,3 +10,4 @@ export { default as AtAGlance } from './organisms/AtAGlance.svelte';
 export { default as Footer } from './organisms/Footer.svelte';
 export { default as Header } from './organisms/Header.svelte';
 export { default as Project } from './organisms/Project.svelte';
+export { default as ProjectList } from './organisms/ProjectList.svelte';

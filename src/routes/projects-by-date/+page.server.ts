@@ -3,7 +3,7 @@ import type { IProject } from '$lib';
 import { getProject } from '$lib/helpers';
 
 export const load: PageServerLoad<Record<string, IProject[]>> = async () => {
-	const projectJsonList = import.meta.glob<string>('../../projects/*.json', {
+	const projectJsonList = import.meta.glob<string>('../../lib/projects/*.json', {
 		query: '?raw',
 		import: 'default'
 	});

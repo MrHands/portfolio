@@ -2,14 +2,11 @@
 	import '$styles/toolkit.scss';
 	import type { PageData } from './$types';
 	import type { IBreadcrumb, IProject } from '$lib';
-	import Footer from '$widgets/organisms/Footer.svelte';
-	import Header from '$widgets/organisms/Header.svelte';
-	import { resolve } from '$app/paths';
+	import { Header, Footer, ProjectList } from '$widgets';
 
 	interface Props {
 		data: PageData;
 	}
-
 	let { data }: Props = $props();
 
 	const projectList = $derived(data as Record<string, IProject[]>);
@@ -34,15 +31,11 @@
 
 <Header {breadcrumbs}></Header>
 
-<section class="o-project-list">
+<section class="projects-by-date">
 	{#each projectKeys as key (key)}
-		<div class="o-project-list__entry">
-			<h2 class="o-project-list__title">{key}</h2>
-			{#each projectList[key] as project (project.id)}
-				<a class="o-project-list__link" href={resolve(`/projects/${project.id}`)}>
-					{project.title}
-				</a>
-			{/each}
+		<div class="projects-by-date__entry">
+			<h2 class="projects-by-date__title">{key}</h2>
+			<ProjectList class="projects-by-date__list" projects={projectList[key]}></ProjectList>
 		</div>
 	{/each}
 </section>
@@ -52,11 +45,11 @@
 <style lang="scss">
 	@use '$styles/globals' as *;
 
-	.o-project-list {
+	.projects-by-date {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		padding: 0 12vw;
+		padding: 0 2vw;
 
 		&__entry {
 			display: flex;
@@ -67,11 +60,6 @@
 		&__title {
 			margin-bottom: 0.5rem;
 			border-bottom: 1px solid get-shade($clr-highlight, 500);
-		}
-
-		&__link {
-			color: get-shade($clr-highlight, 700);
-			text-decoration: none;
 		}
 	}
 </style>
