@@ -47,9 +47,10 @@
 							"ps4",
 							"ps5",
 							"steam",
-							"uwp",
-							"windows",
 							"uplay",
+							"uwp",
+							"web",
+							"windows",
 							"xbone",
 							"xbonex"
 						]
@@ -97,7 +98,8 @@
 						"aaa",
 						"f2p",
 						"indie",
-						"mobile"
+						"mobile",
+						"web"
 					]
 				}
 			}
