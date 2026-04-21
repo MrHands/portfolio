@@ -2,11 +2,13 @@
 	import '$styles/toolkit.scss';
 
 	import { Carousel, Controls, CarouselIndicators } from 'flowbite-svelte';
-	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
-	import type { PageData } from './$types';
-	import intro from '../intro.md?raw';
-	import aboutMe from '../about_me.md?raw';
+
 	import { resolve } from '$app/paths';
+	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
+	import intro from '$lib/intro.md?raw';
+	import aboutMe from '$lib/about_me.md?raw';
+
+	import type { PageData } from './$types';
 
 	interface Props {
 		data: PageData;
@@ -39,7 +41,7 @@
 	<CarouselIndicators class="carousel__indicators" />
 </Carousel>
 <a class="projects-link" href={resolve('/projects-by-date')} title="All projects">
-	<h3>More projects →</h3>
+	<h3>All projects →</h3>
 </a>
 
 <h1>About Me</h1>
