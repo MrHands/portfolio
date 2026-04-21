@@ -7,17 +7,22 @@
 		class?: string;
 	}
 	let { project, class: className = '' }: Props = $props();
+
+	const trailerImage = $derived(`./media/previews/${project.trailer.image}`);
 </script>
 
 <a class={['o-project', className].join(' ')} href={resolve(`/projects/${project.id}`)}>
-	<div
-		class="o-project__preview"
-		style="background-image: url('./media/previews/{project.trailer.image}')"
-	></div>
-	<div class="o-project__header">
-		{project.title}
-		<div class="o-project__company">{project.employer.name}</div>
+	<div class="o-project__preview" style="background-image: url({trailerImage})">
+		<div class="o-project__header">
+			<div class="o-project__title">{project.title}</div>
+			<div class="o-project__info">
+				<div class="o-project__company">{project.employer.name}</div>
+				<div class="o-project__divider"></div>
+				<div class="o-project__role">{project.brief.role}</div>
+			</div>
+		</div>
 	</div>
+
 	<p class="o-project__description">{project.brief.description}</p>
 </a>
 
@@ -30,12 +35,8 @@
 		display: grid;
 		grid-template-areas:
 			'preview  '
-			'header   '
-			'desc     '
-			'link     ';
+			'desc     ';
 		grid-template-rows:
-			min-content
-			min-content
 			min-content
 			min-content;
 		grid-template-columns: 1fr;
@@ -63,25 +64,52 @@
 			border-top-left-radius: 0.5rem;
 			border-top-right-radius: 0.5rem;
 			transition: background-size 0.4s;
+
+			&::after {
+				position: absolute;
+				inset: 0;
+				content: '';
+				background: linear-gradient(
+					transparent 0%,
+					rgb(white, 0%) 40%,
+					rgb(white, 70%) 75%,
+					rgb(white, 100%) 100%
+				);
+			}
 		}
 
 		&__header {
+			position: absolute;
+			bottom: 0;
+			z-index: 1;
 			display: flex;
 			flex-direction: column;
 			grid-area: header;
+			gap: 0.5rem;
 			padding: 0 $padding;
-			font-weight: bold;
+		}
 
+		&__info {
+			display: flex;
+			gap: 12px;
+		}
+
+		&__title {
 			@include text-paragraph('l');
+
+			font-weight: bold;
+		}
+
+		&__divider {
+			border-right: 1px solid gray;
 		}
 
 		&__company {
-			grid-area: company;
+			@include text-paragraph('m');
+
 			font-weight: normal;
 			color: get-shade($clr-highlight, 400);
 			text-transform: uppercase;
-
-			@include text-paragraph('m');
 		}
 
 		&__description {
