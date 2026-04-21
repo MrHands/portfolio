@@ -14,6 +14,7 @@ export async function getEmployer(id: string) {
 
 export async function getProject(id: string) {
 	const jsonPath = `./projects/${id}.json`;
+
 	if (!projectFiles[jsonPath]) {
 		console.warn(`Attempted to load invalid project ID: ${id}`);
 		throw new Error(`Project ${id} not found`);
@@ -23,14 +24,10 @@ export async function getProject(id: string) {
 	const project = projectModule.default;
 
 	const mdPath = `./projects/${id}.md`;
-	let source = '';
-	if (sourceFiles[mdPath]) {
-		source = (await sourceFiles[mdPath]()) as string;
-	}
 
 	return {
 		...project,
-		source,
+		source: sourceFiles[mdPath] ? ((await sourceFiles[mdPath]()) as string) : '',
 		employer: await getEmployer(project.brief.employer),
 		id
 	};
