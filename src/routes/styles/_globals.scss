@@ -2,31 +2,30 @@
 @import "tools/text-sizes";
 
 $body-gap: 55px;
-
 $media-width-small: 560px;
 $media-width-medium: 960px;
 $media-width-large: 1920px;
 
 @mixin size-small {
-    @media (max-width: #{$media-width-small - 1px}) {
-        @content;
-    }
+	@media (max-width: #{$media-width-small - 1px}) {
+		@content;
+	}
 }
 
 @mixin size-medium {
-    @media (min-width: #{$media-width-small}) and (max-width: #{$media-width-medium - 1px}) {
-        @content;
-    }
+	@media (min-width: #{$media-width-small}) and (max-width: #{$media-width-medium - 1px}) {
+		@content;
+	}
 }
 
 @mixin size-large {
-    @media (min-width: #{$media-width-medium}) and (max-width: #{$media-width-large - 1px}) {
-        @content;
-    }
+	@media (min-width: #{$media-width-medium}) and (max-width: #{$media-width-large - 1px}) {
+		@content;
+	}
 }
 
 @mixin size-huge {
-    @media (min-width: #{$media-width-large}) {
-        @content;
-    }
+	@media (min-width: #{$media-width-large}) {
+		@content;
+	}
 }

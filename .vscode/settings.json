@@ -1,0 +1,39 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never",
+		"source.sortMembers": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	},
+	"python.analysis.extraPaths": ["./libs/mighty-py"],
+	"[python]": {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never",
+		"editor.formatOnType": false,
+		"editor.formatOnSave": false,
+		"editor.wordBasedSuggestions": "off"
+	},
+	"isort.args": ["--settings-path", "${fileDirname}"],
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "svelte"],
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+			"source.fixAll.eslint": "explicit"
+		}
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+			"source.fixAll.eslint": "explicit"
+		}
+	},
+	"stylelint.validate": ["css", "scss", "svelte"],
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false
+}

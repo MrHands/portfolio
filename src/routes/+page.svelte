@@ -1,28 +1,27 @@
-<script lang="ts">	
+<script lang="ts">
 	import '$styles/toolkit.scss';
 
-	import AtAGlance from "$widgets/organisms/AtAGlance.svelte";
+	import AtAGlance from '$widgets/organisms/AtAGlance.svelte';
 	import Footer from '$widgets/organisms/Footer.svelte';
-	import Header from "$widgets/organisms/Header.svelte";
-	import Project from "$widgets/organisms/Project.svelte";
-	import Section from "$widgets/molecules/Section.svelte";
+	import Header from '$widgets/organisms/Header.svelte';
+	import Project from '$widgets/organisms/Project.svelte';
+	import Section from '$widgets/molecules/Section.svelte';
 
 	import intro from '../intro.md?raw';
 	import aboutMe from '../about_me.md?raw';
 
-	import type { PageData } from './$types';
-	
+	import { type PageData } from './$types';
+
 	export let data: PageData;
 </script>
 
 <svelte:head>
-	<title>Quinten Lansu - Portfolio</title> 
+	<title>Quinten Lansu - Portfolio</title>
 </svelte:head>
 
 <Header></Header>
 
-<Section content={intro}>
-</Section>
+<Section content={intro}></Section>
 
 <h1>At a glance</h1>
 <AtAGlance></AtAGlance>
@@ -30,9 +29,7 @@
 <h1>Projects</h1>
 <div class="o-project-list">
 	{#each data.projects as p}
-	<Project
-		project={p}
-	></Project>
+		<Project project={p}></Project>
 	{/each}
 </div>
 
@@ -50,13 +47,13 @@
 	// Projects
 
 	.o-project-list {
+		box-sizing: border-box;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-gap: 48px 48px;
-		box-sizing: border-box;
-		list-style: none;
+		gap: 48px;
 		width: 100%;
 		padding: 0 6vw;
+		list-style: none;
 	}
 
 	@include size-small {
@@ -69,29 +66,29 @@
 
 	@include size-medium {
 		.o-project-list {
-			grid-gap: 60px 30px;
+			gap: 60px 30px;
 		}
 	}
 
 	// About me
 
-	:global(.o-about-me) {
+	.o-about-me {
 		display: grid !important;
 		grid-template-columns: 1fr 4fr;
 		gap: 1rem;
 		justify-content: center;
-	}
 
-	:global(.o-about-me__image) {
-		background: url('/media/images/quinten-and-lydia.webp');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position-y: center;
-		aspect-ratio: 3 / 12;
-	}
+		:global(&__image) {
+			aspect-ratio: 3 / 12;
+			background: url('/media/images/quinten-and-lydia.webp');
+			background-repeat: no-repeat;
+			background-position-y: center;
+			background-size: contain;
+		}
 
-	:global(.o-about-me__text) {
-		margin: 0 !important;
-		padding: 0 !important;
+		:global(&__text) {
+			padding: 0 !important;
+			margin: 0 !important;
+		}
 	}
 </style>
