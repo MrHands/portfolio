@@ -12,7 +12,7 @@
 	}
 	let { data }: Props = $props();
 
-	const images = $derived(data.images);
+	const { projects, images } = $derived(data);
 
 	let index = $state(0);
 </script>
@@ -28,16 +28,14 @@
 <h1>At a glance</h1>
 <AtAGlance></AtAGlance>
 
-<h1>Projects</h1>
-<Carousel {images} bind:index>
+<h1>Recent Projects</h1>
+<Carousel class="carousel" {images} bind:index duration={8000}>
 	<Controls />
-	<CarouselIndicators />
+	{#snippet slide({ index })}
+		<Project project={projects[index]}></Project>
+	{/snippet}
+	<CarouselIndicators class="carousel__indicators" />
 </Carousel>
-<div class="o-project-list">
-	{#each data.projects as p (p.id)}
-		<Project project={p}></Project>
-	{/each}
-</div>
 
 <h1>About Me</h1>
 <div class="m-section o-about-me">
@@ -50,35 +48,19 @@
 <style lang="scss">
 	@use '$styles/globals' as *;
 
-	// Projects
-
-	.o-project-list {
-		box-sizing: border-box;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 48px;
-		width: 100%;
-		padding: 0 6vw;
-		list-style: none;
-	}
-
-	@include size-small {
-		.o-project-list {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-		}
-	}
-
-	@include size-medium {
-		.o-project-list {
-			gap: 60px 30px;
-		}
-	}
-
-	// About me
-
 	:global {
+		.carousel {
+			height: 100%;
+			margin: 0 6vw;
+
+			&__indicators {
+				position: absolute;
+				top: 1rem;
+				bottom: initial;
+				gap: 1rem;
+			}
+		}
+
 		.o-about-me {
 			display: grid !important;
 			grid-template-columns: 1fr 4fr;

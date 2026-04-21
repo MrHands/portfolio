@@ -14,7 +14,8 @@ export const load: PageServerLoad = async () => {
 			return {
 				src: `/media/previews/${it.trailer.image}`,
 				alt: it.title,
-				title: it.title
+				title: it.title,
+				project: it
 			};
 		});
 
