@@ -99,7 +99,7 @@
 
 		&__info {
 			display: flex;
-			gap: 12px;
+			column-gap: 0.75rem;
 		}
 
 		&__title {

@@ -29,24 +29,12 @@
 	:global {
 		.o-project-list {
 			box-sizing: border-box;
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 48px;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
 			width: 100%;
 			padding: 0 6vw;
 			list-style: none;
-
-			@include size-small {
-				display: flex;
-				flex-direction: column;
-				gap: 2rem;
-			}
-
-			@include size-medium {
-				display: flex;
-				flex-direction: column;
-				gap: 2rem;
-			}
 		}
 	}
 </style>
