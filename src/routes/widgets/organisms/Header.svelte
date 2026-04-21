@@ -1,7 +1,7 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 
-	import { createTimeline } from 'animejs';
+	import { createTimeline, utils } from 'animejs';
 	import type { IBreadcrumb } from '$lib';
 	import { onMount } from 'svelte';
 
@@ -24,6 +24,11 @@
 
 		const distance = -1.3;
 
+		utils.set('.rolodex', {
+			'--from': '0%',
+			'--to': '0%'
+		});
+
 		for (let i = 1; i < words.length; ++i) {
 			tl.add('.o-home-header__words__list', {
 				delay: 800,
@@ -31,6 +36,31 @@
 				translateY: `${distance * i}em`
 			});
 		}
+
+		tl.add('.o-home-header__words__last', {
+			duration: 800,
+			'--from': ['0%', '100%']
+		});
+		tl.add(
+			'.o-home-header__words__last',
+			{
+				duration: 400,
+				'--to': ['0%', '100%']
+			},
+			'<<'
+		);
+		tl.add('.o-home-header__words__last', {
+			duration: 400,
+			'--from': ['100%', '0%']
+		});
+		tl.add(
+			'.o-home-header__words__last',
+			{
+				duration: 300,
+				'--to': ['100%', '0%']
+			},
+			'<<'
+		);
 	});
 
 	let classList = $derived(() => {
@@ -171,10 +201,14 @@
 			}
 
 			&__last {
+				--from: 0%;
+				--to: 0%;
+
 				position: relative;
 				top: -1.3em;
 				color: get-shade($clr-highlight, 500);
 				background: white;
+				clip-path: polygon(var(--from) 0%, var(--to) 0%, var(--to) 100%, var(--from) 100%);
 			}
 		}
 	}
