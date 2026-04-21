@@ -3,7 +3,7 @@
 	"brief": {
 		"type": "software",
 		"role": "Junior Developer",
-		"description": "Security management package that combines reports from multiple sources into a single and intuitive 3D interface.",
+		"description": "Implemented UI features and device drivers for a 3D security management package",
 		"released": "2013-09-01",
 		"employer": "flexposure",
 		"platforms": [ "windows", "mac" ],

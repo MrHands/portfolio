@@ -3,7 +3,7 @@
 	"brief": {
 		"type": "aaa",
 		"role": "Systems Programmer",
-		"description": "As a Systems Programmer, I ensured the in-game map in the Steam version worked well with mouse and keyboard.",
+		"description": "Implemented keyboard and mouse support and map navigation on PC",
 		"released": "2014-02-01",
 		"employer": "nixxes",
 		"platforms": [ "steam" ],

@@ -3,7 +3,7 @@
 	"brief": {
 		"type": "aaa",
 		"role": "Systems Programmer",
-		"description": "As a Systems Programmer, I ensured the Steam version worked well with mouse and keyboard and designed the front-end for the text chat feature.",
+		"description": "Implemented input handling for menus and coop functionality on the PC version",
 		"released": "2014-12-01",
 		"employer": "nixxes",
 		"platforms": [ "steam", "windows", "ps4" ],
