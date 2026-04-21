@@ -1,7 +1,7 @@
 {
 	"employers": {
 		"iec": {
-			"name": "Something Mighty",
+			"name": "Something Mighty GmbH",
 			"location": "Berlin, Germany",
 			"function": "Prinicpal UI Programmer",
 			"serviceStart": "2021-10"
@@ -49,7 +49,7 @@
 			"serviceEnd": "2012-09"
 		},
 		"igad": {
-			"name": "NHTV Hogeschool voor de Kunsten",
+			"name": "NHTV Hogeschool",
 			"location": "Breda, the Netherlands",
 			"function": "Student",
 			"serviceStart": "2008-09",

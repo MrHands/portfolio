@@ -87,6 +87,14 @@
 			grid-area: header;
 			gap: 0.5rem;
 			padding: 0 $padding;
+
+			@include size-medium {
+				@include text-size('m');
+			}
+
+			@include size-small {
+				@include text-size('m');
+			}
 		}
 
 		&__info {
@@ -110,10 +118,7 @@
 			font-weight: normal;
 			color: get-shade($clr-highlight, 400);
 			text-transform: uppercase;
-
-			@include size-medium {
-				@include text-size('s');
-			}
+			overflow-wrap: break-word;
 
 			@include size-small {
 				@include text-size('s');
@@ -121,11 +126,9 @@
 		}
 
 		&__role {
-			color: get-shade($clr-highlight, 300);
+			@include text-size('m');
 
-			@include size-medium {
-				@include text-size('s');
-			}
+			color: get-shade($clr-highlight, 300);
 
 			@include size-small {
 				@include text-size('s');
@@ -137,6 +140,10 @@
 
 			grid-area: desc;
 			padding: 0 $padding;
+
+			@include size-small {
+				@include text-size('s');
+			}
 		}
 
 		&__link {
@@ -146,30 +153,6 @@
 
 			> * {
 				width: 100%;
-			}
-		}
-	}
-
-	@include size-medium {
-		.o-project {
-			&__header {
-				@include text-size('m');
-			}
-
-			&__role {
-				@include text-size('s');
-			}
-
-			&__description {
-				@include text-size('s');
-			}
-		}
-	}
-
-	@include size-small {
-		.o-project {
-			&__header {
-				@include text-size('m');
 			}
 		}
 	}
