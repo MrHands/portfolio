@@ -20,7 +20,7 @@
 <div class={getClassNames(className)}></div>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.a-social-item {
 		$this: &;

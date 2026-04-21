@@ -36,7 +36,7 @@
 </section>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.o-glance {
 		@include text-sans-serif('M');

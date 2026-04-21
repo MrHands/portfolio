@@ -10,10 +10,8 @@
 	export { className as class };
 </script>
 
-<div
-	class={getClassNames(className)}
-></div>
+<div class={getClassNames(className)}></div>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 </style>

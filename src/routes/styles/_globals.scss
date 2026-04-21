@@ -1,5 +1,5 @@
-@import "tools/colors";
-@import "tools/text-sizes";
+@forward '$styles/tools/colors';
+@forward '$styles/tools/text-sizes';
 
 $body-gap: 55px;
 $media-width-small: 560px;

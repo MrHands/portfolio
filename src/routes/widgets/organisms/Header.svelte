@@ -45,7 +45,7 @@
 </header>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.o-home-header {
 		$this: &;

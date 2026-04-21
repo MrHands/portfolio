@@ -29,7 +29,7 @@
 </footer>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.o-footer {
 		display: flex;

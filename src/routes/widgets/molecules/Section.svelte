@@ -19,7 +19,7 @@
 </section>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	:global(.m-section) {
 		display: flex;

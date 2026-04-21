@@ -2,11 +2,11 @@
 	import '$styles/toolkit.scss';
 
 	import { marked } from 'marked';
-	import Section from "$widgets/molecules/Section.svelte";
-	import Trailer from "$widgets/molecules/Trailer.svelte";
+	import Section from '$widgets/molecules/Section.svelte';
+	import Trailer from '$widgets/molecules/Trailer.svelte';
 	import Footer from '$widgets/organisms/Footer.svelte';
 	import Header from '$widgets/organisms/Header.svelte';
-	import type { PageData } from "./$types";
+	import type { PageData } from './$types';
 	import type { IBreadcrumb, IProject } from '../../../project-types';
 
 	export let data: PageData;
@@ -16,7 +16,7 @@
 	const breadcrumbs: IBreadcrumb[] = [
 		{ url: '/', title: 'Home' },
 		{ url: '/projects-by-date', title: 'Projects' },
-		{ url: `/projects/${project.id}`, title: project.title },
+		{ url: `/projects/${project.id}`, title: project.title }
 	];
 
 	const tokens = marked.lexer(data.source);
@@ -30,26 +30,21 @@
 </script>
 
 <svelte:head>
-	<title>Quinten Lansu - {project.title}</title> 
+	<title>Quinten Lansu - {project.title}</title>
 </svelte:head>
 
 <Header {breadcrumbs}></Header>
 
 <div class="o-projectTrailer">
-	<Trailer
-		title={project.title}
-		trailer={project.trailer}
-	></Trailer>
+	<Trailer title={project.title} trailer={project.trailer}></Trailer>
 </div>
 
-<Section
-	content={tokens}
-></Section>
+<Section content={tokens}></Section>
 
 <Footer></Footer>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.o-projectTrailer {
 		padding: 0 12vw;

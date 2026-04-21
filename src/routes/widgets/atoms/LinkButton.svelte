@@ -11,7 +11,7 @@
 </a>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.a-button {
 		@include text-header('M');

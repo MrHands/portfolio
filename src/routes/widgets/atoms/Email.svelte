@@ -19,7 +19,7 @@
 </a>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.a-email {
 		@include text-size('M');

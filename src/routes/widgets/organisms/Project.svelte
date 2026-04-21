@@ -20,7 +20,7 @@
 </a>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.o-project {
 		$padding: 1rem;

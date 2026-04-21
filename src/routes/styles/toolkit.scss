@@ -1,14 +1,18 @@
-@import '$styles/globals';
-@import '$styles/fonts';
+@forward '$styles/tools/colors';
+@forward '$styles/tools/text-sizes';
+@use '$styles/globals' as *;
+@use '$styles/fonts' as *;
 
 // Body
 
 body {
 	@include text-paragraph('M');
+
 	display: grid;
-	grid-row-gap: $body-gap;
-	line-height: 1.42857143;
+	row-gap: $body-gap;
 	margin: 0;
+	// stylelint-disable-next-line number-max-precision
+	line-height: 1.42857143;
 }
 
 * {
@@ -21,21 +25,24 @@ body {
 
 h1 {
 	@include text-header('XL');
-	text-align: center;
+
 	color: get-shade($clr-highlight, 500);
+	text-align: center;
 }
 
 h2 {
 	@include text-header('L');
-	text-align: left;
+
 	color: get-shade($clr-highlight, 500);
+	text-align: left;
 }
 
 h3 {
 	@include text-header('M');
-	text-align: left;
-	color: get-shade($clr-highlight, 500);
+
 	margin: 0;
+	color: get-shade($clr-highlight, 500);
+	text-align: left;
 }
 
 @include size-small {
@@ -52,10 +59,12 @@ h3 {
 
 p {
 	@include text-paragraph('M');
-	line-height: 1.42857143;
-	color: #333333;
+
 	max-width: 70ch;
 	margin: 0 0 12px;
+	// stylelint-disable-next-line number-max-precision
+	line-height: 1.42857143;
+	color: #333;
 }
 
 @include size-small {

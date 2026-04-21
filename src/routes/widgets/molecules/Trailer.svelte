@@ -33,7 +33,7 @@
 </div>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.m-trailer {
 		position: relative;

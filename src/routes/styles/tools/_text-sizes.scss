@@ -10,22 +10,25 @@ $text-sizes: (
 );
 
 @mixin text-size($size) {
-	font-size: map-get($text-sizes, to-lower-case($size));
+	font-size: map.get($text-sizes, string.to-lower-case($size));
 }
 
 @mixin text-paragraph($size) {
 	font-family: 'PT Serif', serif;
+
 	@include text-size($size);
 }
 
 @mixin text-sans-serif($size) {
 	font-family: 'PT Sans', sans-serif;
+
 	@include text-size($size);
 }
 
 @mixin text-header($size) {
 	@include text-sans-serif($size);
+
 	font-weight: 500;
-	letter-spacing: 0.1em;
 	text-transform: uppercase;
+	letter-spacing: 0.1em;
 }

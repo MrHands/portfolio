@@ -29,7 +29,7 @@
 </div>
 
 <style lang="scss">
-	@import '$styles/globals';
+	@use '$styles/globals' as *;
 
 	.a-image-preview {
 		display: block;
