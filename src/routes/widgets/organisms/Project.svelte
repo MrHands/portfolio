@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { type IProject } from '$lib';
+	import { ProjectInfo } from '$widgets';
 	import { LockSolid } from 'flowbite-svelte-icons';
 
 	interface Props {
@@ -30,6 +31,7 @@
 		<div class="o-project__locked">
 			<LockSolid class="o-project__locked__icon"></LockSolid>
 			<h2>Project under NDA</h2>
+			<ProjectInfo class="o-project__info" {project}></ProjectInfo>
 		</div>
 	</div>
 {:else}
@@ -37,11 +39,7 @@
 		<div class="o-project__preview" style="background-image: url({trailerImage})">
 			<div class="o-project__header">
 				<div class="o-project__title">{project.title}</div>
-				<div class="o-project__info">
-					<div class="o-project__company">{project.employer.name}</div>
-					<div class="o-project__divider"></div>
-					<div class="o-project__role">{project.brief.role}</div>
-				</div>
+				<ProjectInfo class="o-project__info" {project}></ProjectInfo>
 			</div>
 		</div>
 		<p class="o-project__description">{project.brief.description}</p>
@@ -161,33 +159,6 @@
 				@include text-paragraph('l');
 
 				font-weight: bold;
-			}
-
-			&__divider {
-				border-right: 1px solid gray;
-			}
-
-			&__company {
-				@include text-paragraph('m');
-
-				font-weight: normal;
-				color: get-shade($clr-highlight, 400);
-				text-transform: uppercase;
-				overflow-wrap: break-word;
-
-				@include size-small {
-					@include text-size('s');
-				}
-			}
-
-			&__role {
-				@include text-size('m');
-
-				color: get-shade($clr-highlight, 300);
-
-				@include size-small {
-					@include text-size('s');
-				}
 			}
 
 			&__description {

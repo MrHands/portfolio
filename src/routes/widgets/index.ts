@@ -3,6 +3,7 @@ export { default as ImagePreview } from './atoms/ImagePreview.svelte';
 export { default as LinkButton } from './atoms/LinkButton.svelte';
 export { default as SocialItem } from './atoms/SocialItem.svelte';
 
+export { default as ProjectInfo } from './molecules/ProjectInfo.svelte';
 export { default as Section } from './molecules/Section.svelte';
 export { default as Trailer } from './molecules/Trailer.svelte';
 
