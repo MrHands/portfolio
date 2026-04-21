@@ -32,6 +32,13 @@
 			"source.fixAll.eslint": "explicit"
 		}
 	},
+	"[json]": {
+		"editor.formatOnSave": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "never",
+			"source.sortMembers": "never"
+		}
+	},
 	"stylelint.validate": ["css", "scss", "svelte"],
 	"css.validate": false,
 	"less.validate": false,
