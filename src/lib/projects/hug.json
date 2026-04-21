@@ -13,5 +13,6 @@
 		"image": "hug.jpg",
 		"link": "yt://Wi_kz4MDG1o"
 	},
-	"source": "hug.md"
+	"source": "hug.md",
+	"locked": true
 }

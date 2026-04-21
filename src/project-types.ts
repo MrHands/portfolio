@@ -25,17 +25,18 @@ export interface IProject {
 		released?: string;
 		employer: string;
 		platforms: string[];
-		technologies: string[]
+		technologies: string[];
 		role: string;
 		type: string;
 		stack: string[];
-	},
+	};
 	trailer: {
 		link: string;
 		image: string;
-	}
+	};
 	source: string;
-};
+	locked?: boolean;
+}
 
 export interface IIndex {
 	featured: string[];

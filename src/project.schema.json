@@ -111,7 +111,13 @@
 			"required": [ "image" ],
 			"additionalProperties": false
 		},
-		"source": { "type": "string" }
+		"source": {
+			"type": "string"
+		},
+		"locked": {
+			"type": "boolean",
+			"default": true
+		}
 	},
 	"additionalProperties": false
 }
