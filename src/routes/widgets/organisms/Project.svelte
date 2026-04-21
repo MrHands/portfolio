@@ -70,6 +70,7 @@
 			filter: drop-shadow(1px 2px 2px lightgray);
 
 			&:hover {
+				text-decoration: initial;
 				filter: drop-shadow(3px 4px 8px gray);
 			}
 
