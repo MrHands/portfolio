@@ -1,0 +1,112 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Project",
+	"type": "object",
+	"required": [
+		"brief",
+		"source",
+		"title",
+		"trailer"
+	],
+	"properties": {
+		"brief": {
+			"type": "object",
+			"required": [
+				"description",
+				"employer",
+				"platforms",
+				"released",
+				"role",
+				"technologies",
+				"type"
+			],
+			"properties": {
+				"description": { "type": "string" },
+				"employer": {
+					"type": "string",
+					"enum": [
+						"bigpoint",
+						"digc",
+						"flexposure",
+						"iec",
+						"igad",
+						"nixxes",
+						"ubisoft"
+					]
+				},
+				"platforms": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"linux",
+							"mac",
+							"ps4",
+							"ps5",
+							"steam",
+							"uwp",
+							"windows",
+							"uplay",
+							"xbone",
+							"xbonex"
+						]
+					}
+				},
+				"released": { 
+					"type": "string",
+					"format": "date" 
+				},
+				"role": { "type": "string" },
+				"stack": {
+					"type": "array",
+					"items": { "type": "string" }
+				},
+				"technologies": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"as",
+							"c++",
+							"cdc",
+							"csharp",
+							"g2",
+							"horde3d",
+							"coherent",
+							"js",
+							"ly",
+							"opengl2",
+							"opengl3",
+							"phoenix",
+							"qt",
+							"scaleform",
+							"ts",
+							"ue3",
+							"ue5"
+						]
+					}
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"software",
+						"school",
+						"aaa",
+						"f2p",
+						"indie",
+						"mobile"
+					]
+				}
+			}
+		},
+		"source": { "type": "string" },
+		"title": { "type": "string" },
+		"trailer": {
+			"type": "object",
+			"required": ["image"],
+			"properties": {
+				"image": { "type": "string" }
+			}
+		}
+	}
+}

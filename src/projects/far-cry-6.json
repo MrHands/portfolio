@@ -7,7 +7,7 @@
 		"platforms": [ "uplay", "windows", "xbone", "xbonex", "ps4", "ps5" ],
 		"technologies": [ "c++" ],
 		"role": "UI Programmer",
-		"type": "AAA video game",
+		"type": "aaa",
 		"stack": [ "Dunia" ]
 	},
 	"trailer": {

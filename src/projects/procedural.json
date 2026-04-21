@@ -1,6 +1,8 @@
 {
 	"title": "Procedural Design",
 	"brief": {
+		"type": "school",
+		"role": "Student",
 		"description": "School assignment about procedurally generated content.",
 		"released": "2012-08-01",
 		"employer": "igad",

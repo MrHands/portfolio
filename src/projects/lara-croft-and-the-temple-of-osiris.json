@@ -1,6 +1,8 @@
 {
 	"title": "Lara Croft and the Temple of Osiris",
 	"brief": {
+		"type": "aaa",
+		"role": "Systems Programmer",
 		"description": "As a Systems Programmer, I ensured the Steam version worked well with mouse and keyboard and designed the front-end for the text chat feature.",
 		"released": "2014-12-01",
 		"employer": "nixxes",

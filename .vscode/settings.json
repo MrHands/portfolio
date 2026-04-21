@@ -39,6 +39,12 @@
 			"source.sortMembers": "never"
 		}
 	},
+	"json.schemas": [
+		{
+			"fileMatch": ["/src/projects/*.json"],
+			"url": "./src/project.schema.json"
+		}
+	],
 	"stylelint.validate": ["css", "scss", "svelte"],
 	"css.validate": false,
 	"less.validate": false,

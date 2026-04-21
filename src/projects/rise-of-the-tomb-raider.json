@@ -1,6 +1,8 @@
 {
 	"title": "Rise of the Tomb Raider",
 	"brief": {
+		"type": "aaa",
+		"role": "Systems Programmer",
 		"description": "As a Systems Programmer, I ensured the Steam version worked well with mouse and keyboard and integrated Razer Chroma features.",
 		"released": "2016-01-26",
 		"employer": "nixxes",

@@ -1,11 +1,13 @@
 {
 	"title": "Skull & Bones",
 	"brief": {
+		"type": "aaa",
+		"role": "Lead UI Programmer",
 		"description": "As a Lead UI Programmer, I implemented online features, managed production priorities on the UI team, and mentored several direct reports.",
 		"released": "2024-02-13",
 		"employer": "ubisoft",
 		"platforms": [ "windows", "steam" ],
-		"technologies": []
+		"technologies": ["c++", "phoenix"]
 	},
 	"trailer": {
 		"link": "yt://OmDYo7MbQxo",

@@ -1,13 +1,13 @@
 {
 	"title": "Deus Ex: Mankind Divided",
 	"brief": {
+		"type": "aaa",
+		"role": "Systems Programmer",
 		"description": "As a Systems Programmer, I implemented several key features for the Steam version, including the weapons bar and the key rebinding screen.",
 		"released": "2016-08-23",
 		"employer": "nixxes",
 		"platforms": [ "steam", "windows" ],
 		"technologies": [ "g2", "scaleform", "c++", "as" ],
-		"role": "Systems Programmer",
-		"type": "AAA video game",
 		"stack": [ "Dawn Engine", "Autodesk Scaleform", "ActionScript 3" ]
 	},
 	"trailer": {
