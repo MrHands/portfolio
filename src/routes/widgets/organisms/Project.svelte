@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { type IProject } from '$lib';
 	import { ProjectInfo } from '$widgets';
-	import { LockSolid } from 'flowbite-svelte-icons';
+	import LockSolid from 'flowbite-svelte-icons/LockSolid.svelte';
 
 	interface Props {
 		project: IProject;
