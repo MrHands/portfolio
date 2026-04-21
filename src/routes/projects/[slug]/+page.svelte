@@ -2,10 +2,9 @@
 	import '$styles/toolkit.scss';
 
 	import { marked } from 'marked';
-	import Section from '$widgets/molecules/Section.svelte';
-	import Trailer from '$widgets/molecules/Trailer.svelte';
-	import Footer from '$widgets/organisms/Footer.svelte';
-	import Header from '$widgets/organisms/Header.svelte';
+
+	import { Section, Trailer, Footer, Header } from '$widgets';
+
 	import type { PageData } from './$types';
 	import type { IBreadcrumb, IProject } from '$lib';
 

@@ -31,8 +31,7 @@
 				<p>My name is <em>Quinten Lansu</em></p>
 				<p>and I build <em>user interfaces</em></p>
 			</div>
-		{/if}
-		{#if breadcrumbs.length > 0}
+		{:else}
 			<div class="o-home-header__breadcrumbs">
 				{#each breadcrumbsBefore as b}
 					<a class="o-home-header__breadcrumbs__item" href={b.url}>{b.title}</a>
@@ -66,7 +65,7 @@
 
 		&__container {
 			display: grid;
-			grid-template-areas: 'face  intro       ';
+			grid-template-areas: 'face  intro';
 			grid-template-columns: 1fr 4fr;
 			column-gap: 24px;
 			align-items: center;
@@ -105,8 +104,6 @@
 			grid-area: breadcrumbs;
 			grid-template-columns: repeat(4, min-content);
 			column-gap: 12px;
-			padding: 0;
-			margin: 0;
 			list-style: none;
 
 			&__item {
