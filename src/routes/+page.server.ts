@@ -12,7 +12,7 @@ export const load: PageServerLoad = async () => {
 		const projects = await Promise.all(promises);
 		const images = projects.map((it) => {
 			return {
-				src: it.trailer.image,
+				src: `/media/previews/${it.trailer.image}`,
 				alt: it.title,
 				title: it.title
 			};
