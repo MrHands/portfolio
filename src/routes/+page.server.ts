@@ -1,30 +1,23 @@
-import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { IProject } from '$lib';
-import { getProject } from '$lib/helpers';
+import { GetFeaturedList, getProject } from '$lib/helpers';
 
 export const load: PageServerLoad = async () => {
-	const module = await import('../index.json');
-	if (module) {
-		const index = module.default;
-		const promises: Promise<IProject>[] = index.featured.map(async (id) => getProject(id));
+	const featured = await GetFeaturedList();
+	const promises: Promise<IProject>[] = featured.map(async (id) => getProject(id));
+	const projects = await Promise.all(promises);
 
-		const projects = await Promise.all(promises);
-		const images = projects.map((it) => {
-			return {
-				src: `/media/previews/${it.trailer.image}`,
-				alt: it.title,
-				title: it.title,
-				project: it
-			};
-		});
-
+	const images = projects.map((it) => {
 		return {
-			projects,
-			images
+			src: `/media/previews/${it.trailer.image}`,
+			alt: it.title,
+			title: it.title,
+			project: it
 		};
-	}
+	});
 
-	error(404, 'Not found');
+	return {
+		projects,
+		images
+	};
 };
-export const prerender = true;

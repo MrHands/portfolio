@@ -7,6 +7,10 @@ interface IEmployerList {
 	employers: Record<string, IEmployer>;
 }
 
+export async function GetFeaturedList() {
+	return (await import('./featured.json')).featured;
+}
+
 export async function getEmployer(id: string) {
 	const employerList: IEmployerList = (await import('./employers.json')).default;
 	return employerList.employers[id];
