@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '$styles/toolkit.scss';
 
+	import { Carousel, Controls, CarouselIndicators } from 'flowbite-svelte';
 	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
 	import type { PageData } from './$types';
 	import intro from '../intro.md?raw';
@@ -10,6 +11,10 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
+
+	const images = $derived(data.images);
+
+	let index = $state(0);
 </script>
 
 <svelte:head>
@@ -24,6 +29,10 @@
 <AtAGlance></AtAGlance>
 
 <h1>Projects</h1>
+<Carousel {images} bind:index>
+	<Controls />
+	<CarouselIndicators />
+</Carousel>
 <div class="o-project-list">
 	{#each data.projects as p (p.id)}
 		<Project project={p}></Project>

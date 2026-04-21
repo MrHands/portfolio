@@ -9,8 +9,18 @@ export const load: PageServerLoad = async () => {
 		const index = module.default;
 		const promises: Promise<IProject>[] = index.featured.map(async (id) => getProject(id));
 
+		const projects = await Promise.all(promises);
+		const images = projects.map((it) => {
+			return {
+				src: it.trailer.image,
+				alt: it.title,
+				title: it.title
+			};
+		});
+
 		return {
-			projects: await Promise.all(promises)
+			projects,
+			images
 		};
 	}
 
