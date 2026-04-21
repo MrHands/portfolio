@@ -29,10 +29,7 @@
 
 <Section content={intro}></Section>
 
-<h1>At a glance</h1>
-<AtAGlance></AtAGlance>
-
-<h1>Recent Projects</h1>
+<h1>Projects I've worked on</h1>
 <Carousel class="carousel" {images} bind:index {duration}>
 	<Controls />
 	{#snippet slide({ index })}
@@ -45,6 +42,7 @@
 </a>
 
 <h1>About Me</h1>
+<AtAGlance></AtAGlance>
 <div class="m-section o-about-me">
 	<div class="o-about-me__image"></div>
 	<Section content={aboutMe} class="o-about-me__text"></Section>
