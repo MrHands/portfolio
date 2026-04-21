@@ -88,3 +88,13 @@ ul {
 		@include text-size('S');
 	}
 }
+
+// Links
+
+a {
+	text-decoration-line: underline;
+
+	&:hover {
+		text-decoration-line: underline;
+	}
+}
