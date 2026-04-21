@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ImagePreview from "$widgets/atoms/ImagePreview.svelte";
-	import SvelteMarkdown from "svelte-markdown";
+	import SvelteMarkdown from 'svelte-markdown';
 	import { marked } from 'marked';
+	import { ImagePreview } from '$widgets';
 
 	export let content: string | marked.TokensList = '';
 
@@ -9,9 +9,7 @@
 	export { className as class };
 </script>
 
-<section
-	class={['m-section', className].join(' ')}
->
+<section class={['m-section', className].join(' ')}>
 	<SvelteMarkdown
 		source={content}
 		renderers={{

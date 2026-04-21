@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ITrailer } from "../../../project-types";
+	import type { ITrailer } from '../../../project-types';
 
 	export let trailer: ITrailer;
 	export let title: string;
@@ -17,36 +17,30 @@
 	export { className as class };
 </script>
 
-<div
-	class={getClassNames(className)}
->
-{#if link !== ''}
-	<iframe
-		class="m-trailer__item"
-		src={`https://www.youtube.com/embed/${link.substring('yt://'.length)}`}
-		{title}
-		allowfullscreen={true}
-		frameborder="0"
-	></iframe>
-{/if}
-{#if link === ''}
-	<img
-		class="m-trailer__item"
-		src={`../media/previews/${trailer.image}`}
-		alt={title}
-	/>
-{/if}
+<div class={getClassNames(className)}>
+	{#if link !== ''}
+		<iframe
+			class="m-trailer__item"
+			src={`https://www.youtube.com/embed/${link.substring('yt://'.length)}`}
+			{title}
+			allowfullscreen={true}
+			frameborder="0"
+		></iframe>
+	{/if}
+	{#if link === ''}
+		<img class="m-trailer__item" src={`../media/previews/${trailer.image}`} alt={title} />
+	{/if}
 </div>
 
 <style lang="scss">
 	@import '$styles/globals';
 
 	.m-trailer {
-		display: block;
 		position: relative;
+		display: block;
 		width: 100%;
 		height: 100%;
-		padding: 0 0 56.25% 0;
+		padding: 0 0 56.25%;
 		overflow: hidden;
 
 		&__item {

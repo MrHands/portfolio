@@ -7,15 +7,13 @@
 
 	interface IImageProperties {
 		orientation: 'left' | 'right';
-	};
-	let properties: IImageProperties =
-		(imageTitle !== '')
-			? JSON.parse(imageTitle)
-			: { orientation: 'left' };
+	}
+	const properties: IImageProperties =
+		imageTitle !== '' ? JSON.parse(imageTitle) : { orientation: 'left' };
 
 	function getClassNames(name: string) {
-		const combined = ['a-imagePreview'];
-		combined.push(`a-imagePreview--${properties.orientation}`);
+		const combined = ['a-image-preview'];
+		combined.push(`a-image-preview--${properties.orientation}`);
 		combined.push(name);
 
 		return combined.join(' ');
@@ -26,14 +24,14 @@
 </script>
 
 <div class={getClassNames(className)}>
-	<img class="a-imagePreview__image" src={href} title={text} alt={text} />
-	<div class="a-imagePreview__text">{text}</div>
+	<img class="a-image-preview__image" src={href} title={text} alt={text} />
+	<div class="a-image-preview__text">{text}</div>
 </div>
 
 <style lang="scss">
 	@import '$styles/globals';
 
-	.a-imagePreview {
+	.a-image-preview {
 		display: block;
 		width: 100%;
 		text-align: center;

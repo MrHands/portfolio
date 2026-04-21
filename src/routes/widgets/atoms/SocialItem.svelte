@@ -3,8 +3,8 @@
 	export let href = '';
 
 	function getClassNames(name: string) {
-		const combined = ['a-socialItem'];
-		combined.push(`a-socialItem--${logo}`);
+		const combined = ['a-social-item'];
+		combined.push(`a-social-item--${logo}`);
 		combined.push(name);
 
 		return combined.join(' ');
@@ -14,21 +14,15 @@
 	export { className as class };
 </script>
 
-<a
-	class={getClassNames(className)}
-	{href}
-	target="_blank"
->
-	<div class="a-socialItem__logo"></div>
+<a class={getClassNames(className)} {href} target="_blank">
+	<div class="a-social-item__logo"></div>
 </a>
-<div
-	class={getClassNames(className)}
-></div>
+<div class={getClassNames(className)}></div>
 
 <style lang="scss">
 	@import '$styles/globals';
 
-	.a-socialItem {
+	.a-social-item {
 		$this: &;
 
 		&__logo {
@@ -36,11 +30,11 @@
 			width: 32px;
 			height: 32px;
 			background-color: get-shade($clr-highlight, 700);
-			background-image: url("/media/images/social.png");
+			background-image: url('/media/images/social.png');
 			background-repeat: no-repeat;
-			border-radius: 16px;
 			background-clip: padding-box;
-			
+			border-radius: 16px;
+
 			#{$this}--twitter & {
 				background-position: -32px 0;
 

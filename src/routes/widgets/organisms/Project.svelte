@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { type IProject } from "../../../project-types";
-	import LinkButton from "$widgets/atoms/LinkButton.svelte";
+	import { type IProject } from '../../../project-types';
 
 	export let project: IProject;
 
@@ -8,15 +7,11 @@
 	export { className as class };
 </script>
 
-<a
-	class={['o-project', className].join(' ')}
-	href="projects/{project.id}"
->
+<a class={['o-project', className].join(' ')} href="projects/{project.id}">
 	<div
 		class="o-project__preview"
 		style="background-image: url('./media/previews/{project.trailer.image}')"
-	>
-	</div>
+	></div>
 	<div class="o-project__header">
 		{project.title}
 		<div class="o-project__company">{project.employer.name}</div>
@@ -31,58 +26,60 @@
 		$padding: 1rem;
 
 		display: grid;
-		grid-row-gap: 0.5rem;
-		grid-template-columns: 1fr;
+		grid-template-areas:
+			'preview  '
+			'header   '
+			'desc     '
+			'link     ';
 		grid-template-rows:
 			min-content
 			min-content
 			min-content
 			min-content;
-		grid-template-areas: 
-			"preview  "
-			"header   "
-			"desc     "
-			"link     ";
-		text-decoration: none;
+		grid-template-columns: 1fr;
+		row-gap: 0.5rem;
 		color: initial;
-		filter: drop-shadow(1px 2px 2px lightgray);
+		text-decoration: none;
 		background: white;
 		border-radius: 0.5rem;
+		filter: drop-shadow(1px 2px 2px lightgray);
 
 		&:hover {
 			filter: drop-shadow(3px 4px 8px gray);
 		}
 
 		&__preview {
-			grid-area: preview;
 			position: relative;
-			overflow: hidden;
+			grid-area: preview;
 			height: 0;
-			background-size: auto;
-			background-position: center;
-			background-repeat: no-repeat;
 			padding-top: 56.25%;
+			overflow: hidden;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: auto;
+			background-size: 100%;
 			border-top-left-radius: 0.5rem;
 			border-top-right-radius: 0.5rem;
-			background-size: 100%;
 			transition: background-size 0.4s;
 		}
 
 		&__header {
-			grid-area: header;
-			@include text-paragraph('l');
 			display: flex;
 			flex-direction: column;
-			font-weight: bold;
+			grid-area: header;
 			padding: 0 $padding;
+			font-weight: bold;
+
+			@include text-paragraph('l');
 		}
 
 		&__company {
 			grid-area: company;
-			@include text-paragraph('m');
-			text-transform: uppercase;
-			color: get-shade($clr-highlight, 400);
 			font-weight: normal;
+			color: get-shade($clr-highlight, 400);
+			text-transform: uppercase;
+
+			@include text-paragraph('m');
 		}
 
 		&__description {
@@ -91,10 +88,9 @@
 		}
 
 		&__link {
-			grid-area: link;
 			display: flex;
-			align-self: center;
-			justify-self: flex-end;
+			grid-area: link;
+			place-self: center flex-end;
 
 			> * {
 				width: 100%;

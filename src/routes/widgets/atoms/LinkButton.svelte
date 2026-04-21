@@ -6,10 +6,7 @@
 	export { className as class };
 </script>
 
-<a
-	class={['a-button', className].join(' ')}
-	href={url}
->
+<a class={['a-button', className].join(' ')} href={url}>
 	{text}
 </a>
 
@@ -18,23 +15,24 @@
 
 	.a-button {
 		@include text-header('M');
-		background: get-shade($clr-highlight, 500);
+
+		padding: 12px;
 		color: white;
 		text-align: center;
 		text-decoration: none;
-		padding: 12px;
+		background: get-shade($clr-highlight, 500);
 		border: 1px solid transparent;
 
 		&--secondary {
-			background: none;
 			color: get-shade($clr-highlight, 500);
+			background: none;
 			border-color: get-shade($clr-highlight, 500);
 		}
 
 		&:hover {
+			color: white;
 			text-decoration: none;
 			background: get-shade($clr-highlight, 300);
-			color: white;
 			border-color: transparent;
 		}
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LinkButton from '../atoms/LinkButton.svelte';
+	import { LinkButton } from '$widgets';
 </script>
 
 <section class="o-glance">
@@ -31,10 +31,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<LinkButton
-		class="o-glance__download"
-		url="media/CV_Quinten_Lansu_2025.pdf"
-		text="Download my CV"
+	<LinkButton class="o-glance__download" url="media/CV_Quinten_Lansu_2025.pdf" text="Download my CV"
 	></LinkButton>
 </section>
 
@@ -43,27 +40,29 @@
 
 	.o-glance {
 		@include text-sans-serif('M');
+
 		display: grid;
-		grid-template-areas: 
-			"table    table      table"
-			".        download   .    ";
-		grid-row-gap: 12px;
+		grid-template-areas:
+			'table    table      table'
+			'.        download   .    ';
+		row-gap: 12px;
 		padding: 12px 6vw;
 		margin: 0 auto;
 		border: 2px solid get-shade($clr-highlight, 500);
 
 		&__table {
 			grid-area: table;
-			@include text-size('M');
 			width: 100%;
-			background: transparent;
 			border-spacing: 0;
 			border-collapse: collapse;
+			background: transparent;
+
+			@include text-size('M');
 
 			tr {
 				display: grid;
 				grid-template-columns: 1fr 2fr;
-				grid-column-gap: 24px;
+				column-gap: 24px;
 				align-content: center;
 				height: 32px;
 
@@ -75,10 +74,10 @@
 				}
 			}
 		}
-	}
 
-	:global(.o-glance__download) {
-		grid-area: download;
+		:global(&__download) {
+			grid-area: download;
+		}
 	}
 
 	@include size-small {

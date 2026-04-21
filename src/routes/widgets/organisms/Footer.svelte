@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Email from "$widgets/atoms/Email.svelte";
-	import SocialItem from "$widgets/atoms/SocialItem.svelte";
+	import { Email, SocialItem } from '$widgets';
 
 	function getClassNames(name: string) {
 		const combined = ['o-footer'];
@@ -13,19 +12,17 @@
 	export { className as class };
 </script>
 
-<footer
-	class={getClassNames(className)}
->
+<footer class={getClassNames(className)}>
 	<h1 class="o-footer__header">Let's build something amazing together</h1>
-	<p class="o-footer__text">Feel free to reach out to me if you have a question or just want to connect.</p>
+	<p class="o-footer__text">
+		Feel free to reach out to me if you have a question or just want to connect.
+	</p>
 	<ul class="o-footer__socials">
 		<li>
 			<Email email="quintenlansu@gmail.com"></Email>
 		</li>
 		<li>
-			<SocialItem
-				logo="linkedin"
-				href="http://www.linkedin.com/profile/view?id=46334816"
+			<SocialItem logo="linkedin" href="http://www.linkedin.com/profile/view?id=46334816"
 			></SocialItem>
 		</li>
 	</ul>
@@ -38,15 +35,16 @@
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-		background: get-shade($clr-highlight, 500);
-		color: get-shade($clr-highlight, 100);
 		padding: 24px 12vw;
+		color: get-shade($clr-highlight, 100);
+		background: get-shade($clr-highlight, 500);
 
 		&__header {
 			@include text-sans-serif('L');
+
 			font-weight: bold;
-			text-align: left;
 			color: get-shade($clr-highlight, 100);
+			text-align: left;
 		}
 
 		&__text {
@@ -56,10 +54,10 @@
 		&__socials {
 			display: grid;
 			grid-template-columns: repeat(3, min-content);
-			grid-column-gap: 12px;
+			column-gap: 12px;
 			align-items: center;
-			list-style: none;
 			margin: 0;
+			list-style: none;
 		}
 	}
 

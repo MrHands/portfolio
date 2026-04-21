@@ -1,11 +1,7 @@
 <script lang="ts">
 	import '$styles/toolkit.scss';
 
-	import AtAGlance from '$widgets/organisms/AtAGlance.svelte';
-	import Footer from '$widgets/organisms/Footer.svelte';
-	import Header from '$widgets/organisms/Header.svelte';
-	import Project from '$widgets/organisms/Project.svelte';
-	import Section from '$widgets/molecules/Section.svelte';
+	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
 
 	import intro from '../intro.md?raw';
 	import aboutMe from '../about_me.md?raw';

@@ -1,4 +1,6 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-at-html-tags */
+
 	export let email: string;
 
 	function getClassNames(name: string) {
@@ -12,10 +14,7 @@
 	export { className as class };
 </script>
 
-<a
-	href={`mailto:${email}`}
-	class={getClassNames(className)}
->
+<a href={`mailto:${email}`} class={getClassNames(className)}>
 	{@html email}
 </a>
 
@@ -24,10 +23,11 @@
 
 	.a-email {
 		@include text-size('M');
-		background: get-shade($clr-highlight, 700);
+
+		padding: 8px 12px;
 		color: get-shade($clr-highlight, 100);
 		text-decoration: none;
-		padding: 8px 12px;
+		background: get-shade($clr-highlight, 700);
 		border-radius: 8px;
 
 		&:hover {
