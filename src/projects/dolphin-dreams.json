@@ -10,7 +10,6 @@
 		"technologies": [ "c++", "horde3d", "opengl2" ]
 	},
 	"trailer": {
-		"link": "",
 		"image": "dolphin-dreams.jpg"
 	},
 	"source": "dolphin-dreams.md"

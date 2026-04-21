@@ -9,8 +9,10 @@
 		"trailer"
 	],
 	"properties": {
+		"title": { "type": "string" },
 		"brief": {
 			"type": "object",
+			"additionalProperties": false,
 			"required": [
 				"description",
 				"employer",
@@ -99,14 +101,16 @@
 				}
 			}
 		},
-		"source": { "type": "string" },
-		"title": { "type": "string" },
 		"trailer": {
 			"type": "object",
-			"required": ["image"],
 			"properties": {
-				"image": { "type": "string" }
-			}
-		}
-	}
+				"image": { "type": "string" },
+				"link": { "type": "string" }
+			},
+			"required": [ "image" ],
+			"additionalProperties": false
+		},
+		"source": { "type": "string" }
+	},
+	"additionalProperties": false
 }
