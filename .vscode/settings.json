@@ -41,7 +41,7 @@
 	},
 	"json.schemas": [
 		{
-			"fileMatch": ["/src/projects/*.json"],
+			"fileMatch": ["/src/lib/projects/*.json"],
 			"url": "./src/project.schema.json"
 		}
 	],

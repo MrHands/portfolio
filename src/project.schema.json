@@ -17,7 +17,6 @@
 				"description",
 				"employer",
 				"platforms",
-				"released",
 				"role",
 				"technologies",
 				"type"
@@ -27,9 +26,11 @@
 				"employer": {
 					"type": "string",
 					"enum": [
+						"avalanche",
 						"bigpoint",
 						"digc",
 						"flexposure",
+						"guerilla",
 						"iec",
 						"igad",
 						"nixxes",

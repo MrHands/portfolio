@@ -27,6 +27,13 @@
 			"serviceStart": "2016-06",
 			"serviceEnd": "2018-02"
 		},
+		"guerilla": {
+			"name": "Guerilla BV",
+			"location": "Amsterdam, the Netherlands",
+			"function": "Contractor",
+			"serviceStart": "2024-12",
+			"serviceEnd": "2025-07"
+		},
 		"nixxes": {
 			"name": "Nixxes Software BV",
 			"location": "Utrecht, the Netherlands",
