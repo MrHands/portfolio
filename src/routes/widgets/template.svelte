@@ -1,19 +1,26 @@
 <script lang="ts">
-	function getClassNames(name: string) {
-		const combined = ['a-button'];
-		combined.push(name);
-
-		return combined.join(' ');
-	}
-
-	interface Props {
+	interface IProps {
 		class?: string;
 	}
-	let { class: className = '' }: Props = $props();
+	let { class: className }: IProps = $props();
+
+	let classList = $derived(() => {
+		const resolved = ['o-template'];
+		if (className) {
+			resolved.push(className);
+		}
+		return resolved;
+	});
 </script>
 
-<div class={getClassNames(className)}></div>
+<div class={classList().join(' ')}></div>
 
 <style lang="scss">
 	@use '$styles/globals' as *;
+
+	:global {
+		.o-template {
+			/* styles */
+		}
+	}
 </style>

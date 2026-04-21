@@ -3,36 +3,45 @@
 
 	import type { IBreadcrumb } from '$lib';
 
-	interface Props {
+	interface IProps {
 		breadcrumbs?: IBreadcrumb[];
 		class?: string;
 	}
-	let { breadcrumbs = [], class: className = '' }: Props = $props();
+	let { breadcrumbs = [], class: className }: IProps = $props();
 
 	const breadcrumbsBefore = $derived(breadcrumbs.length > 1 ? breadcrumbs.slice(0, -1) : []);
 	const breadcrumbLast = $derived(
 		breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1] : { url: '', title: '' }
 	);
 
-	function getClassNames(name: string) {
-		const combined = ['o-home-header'];
-		if (breadcrumbs.length > 0) {
-			combined.push('o-home-header--breadcrumbs');
-		}
-		combined.push(name);
+	const words = $state(['user interfaces', 'games', 'experiences']);
 
-		return combined.join(' ');
-	}
+	let classList = $derived(() => {
+		const resolved = ['o-home-header'];
+		if (className) {
+			resolved.push(className);
+		}
+		if (breadcrumbs.length > 0) {
+			resolved.push('o-home-header--breadcrumbs');
+		}
+		return resolved;
+	});
 </script>
 
-<header class={getClassNames(className)}>
+<header class={classList().join(' ')}>
 	<div class="o-home-header__container">
 		<div class="o-home-header__headshot"></div>
 		{#if breadcrumbs.length === 0}
 			<div class="o-home-header__intro">
 				<p>Hello there!</p>
 				<p>My name is <em>Quinten Lansu</em></p>
-				<p>and I build <em>user interfaces</em></p>
+				<p>
+					and I build <span class="o-home-header__words">
+						{#each words as w (w)}
+							<em>{w}</em>
+						{/each}
+					</span>
+				</p>
 			</div>
 		{:else}
 			<div class="o-home-header__breadcrumbs">
@@ -129,6 +138,13 @@
 				font-style: normal;
 				font-weight: bold;
 			}
+		}
+
+		&__words {
+			display: inline-flex;
+			flex-direction: column;
+			max-height: 1.25em;
+			overflow: hidden;
 		}
 	}
 
