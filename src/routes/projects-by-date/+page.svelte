@@ -10,7 +10,7 @@
 	let { data }: Props = $props();
 
 	function projectKey(value: string) {
-		return value === 'Ongoing' ? new Date().getFullYear() : Number(value);
+		return value === 'Ongoing' ? new Date().getFullYear() + 1 : Number(value);
 	}
 
 	const projectList = $derived(data as Record<string, IProject[]>);
@@ -35,8 +35,10 @@
 <section class="projects-by-date">
 	{#each projectKeys as key (key)}
 		<div class="projects-by-date__entry">
-			<h2 class="projects-by-date__title">{key}</h2>
-			<ProjectList class="projects-by-date__list" projects={projectList[key]}></ProjectList>
+			{#if projectList[key].length > 0}
+				<h2 class="projects-by-date__title">{key}</h2>
+				<ProjectList class="projects-by-date__list" projects={projectList[key]}></ProjectList>
+			{/if}
 		</div>
 	{/each}
 </section>

@@ -7,7 +7,8 @@
 		"employer": "guerilla",
 		"platforms": [ "steam", "windows" ],
 		"technologies": [ "c++" ],
-		"stack": [ "Decima Engine" ]
+		"stack": [ "Decima Engine" ],
+		"released": "2025-01-01"
 	},
 	"trailer": {
 		"image": "hug.png",
