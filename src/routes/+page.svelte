@@ -6,7 +6,7 @@
 	import intro from '../intro.md?raw';
 	import aboutMe from '../about_me.md?raw';
 
-	import { type PageData } from './$types';
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>

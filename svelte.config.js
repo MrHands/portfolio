@@ -1,3 +1,4 @@
+import path from 'path';
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
@@ -18,13 +19,13 @@ const config = {
 			assets: 'build',
 			fallback: undefined,
 			precompress: false,
-			strict: true,
+			strict: true
 		}),
 		alias: {
-			$styles: 'src/routes/styles',
-			$widgets: 'src/routes/widgets',
-		},
-	},
+			$styles: path.resolve('src/routes/styles'),
+			$widgets: path.resolve('src/routes/widgets')
+		}
+	}
 };
 
 export default config;
