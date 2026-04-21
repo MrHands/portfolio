@@ -32,3 +32,11 @@ $text-sizes: (
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 }
+
+@mixin text-elipsis($max-lines: 2) {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: $max-lines;
+	-webkit-box-orient: vertical;
+}

@@ -133,6 +133,8 @@
 		}
 
 		&__description {
+			@include text-elipsis(2);
+
 			grid-area: desc;
 			padding: 0 $padding;
 		}
