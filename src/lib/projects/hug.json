@@ -1,0 +1,17 @@
+{
+	"title": "Horizon Hunters Gathering",
+	"brief": {
+		"role": "Contractor",
+		"type": "aaa",
+		"description": "",
+		"released": "2025-07-01",
+		"employer": "iec",
+		"platforms": [ "steam", "windows" ],
+		"technologies": [ "c++" ],
+		"stack": [ "Decima Engine" ]
+	},
+	"trailer": {
+		"image": "hug.webp"
+	},
+	"source": "hug.md"
+}
