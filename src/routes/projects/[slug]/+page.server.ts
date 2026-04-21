@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { IProject } from '../../../project-types';
-import { getProject } from '../../../helpers';
+import type { IProject } from '$lib';
+import { getProject } from '$lib/helpers';
 
 export const load: PageServerLoad<IProject> = async ({ params }) => {
 	const project = await getProject(params.slug);

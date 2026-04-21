@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ITrailer } from '../../../project-types';
+	import type { ITrailer } from '$lib';
 
 	export let trailer: ITrailer;
 	export let title: string;

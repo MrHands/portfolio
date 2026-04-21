@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$styles/toolkit.scss';
 	import type { PageData } from './$types';
-	import type { IBreadcrumb, IProject } from '../../project-types';
+	import type { IBreadcrumb, IProject } from '$lib';
 	import Footer from '$widgets/organisms/Footer.svelte';
 	import Header from '$widgets/organisms/Header.svelte';
 

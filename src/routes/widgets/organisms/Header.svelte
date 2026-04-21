@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IBreadcrumb } from '../../../project-types';
+	import type { IBreadcrumb } from '$lib';
 
 	export let breadcrumbs: IBreadcrumb[] = [];
 

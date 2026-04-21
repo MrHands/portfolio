@@ -7,7 +7,7 @@
 	import Footer from '$widgets/organisms/Footer.svelte';
 	import Header from '$widgets/organisms/Header.svelte';
 	import type { PageData } from './$types';
-	import type { IBreadcrumb, IProject } from '../../../project-types';
+	import type { IBreadcrumb, IProject } from '$lib';
 
 	export let data: PageData;
 
@@ -35,7 +35,7 @@
 
 <Header {breadcrumbs}></Header>
 
-<div class="o-projectTrailer">
+<div class="o-project-trailer">
 	<Trailer title={project.title} trailer={project.trailer}></Trailer>
 </div>
 
@@ -46,7 +46,7 @@
 <style lang="scss">
 	@use '$styles/globals' as *;
 
-	.o-projectTrailer {
+	.o-project-trailer {
 		padding: 0 12vw;
 	}
 </style>

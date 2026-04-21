@@ -1,14 +1,14 @@
 import type { PageServerLoad } from './$types';
-import type { IProject } from '../../project-types';
-import { getProject } from '../../helpers';
+import type { IProject } from '$lib';
+import { getProject } from '$lib/helpers';
 
 export const load: PageServerLoad<Record<string, IProject[]>> = async () => {
 	const projectJsonList = import.meta.glob<string>('../../projects/*.json', {
 		query: '?raw',
-		import: 'default',
+		import: 'default'
 	});
 	const projectMap: Record<string, IProject[]> = {
-		'Ongoing': [],
+		Ongoing: []
 	};
 
 	for (const p in projectJsonList) {
@@ -17,7 +17,7 @@ export const load: PageServerLoad<Record<string, IProject[]>> = async () => {
 		if (project.brief.released === undefined) {
 			projectMap['Ongoing'].push(project);
 			continue;
-		}	
+		}
 
 		const release = new Date(project.brief.released);
 		const year = release.getFullYear().toString();

@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { IProject } from '../project-types';
-import { getProject } from '../helpers';
+import type { IProject } from '$lib';
+import { getProject } from '$lib/helpers';
 
 export const load: PageServerLoad = async () => {
 	const module = await import('../index.json');
@@ -10,7 +10,7 @@ export const load: PageServerLoad = async () => {
 		const promises: Promise<IProject>[] = index.featured.map(async (id) => getProject(id));
 
 		return {
-			projects: await Promise.all(promises),
+			projects: await Promise.all(promises)
 		};
 	}
 

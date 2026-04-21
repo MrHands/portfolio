@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type IProject } from '../../../project-types';
+	import { type IProject } from '$lib';
 
 	export let project: IProject;
 
