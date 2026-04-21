@@ -6,6 +6,7 @@
 	import type { PageData } from './$types';
 	import intro from '../intro.md?raw';
 	import aboutMe from '../about_me.md?raw';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		data: PageData;
@@ -37,6 +38,9 @@
 	{/snippet}
 	<CarouselIndicators class="carousel__indicators" />
 </Carousel>
+<a class="projects-link" href={resolve('/projects-by-date')} title="All projects">
+	<h3>More projects →</h3>
+</a>
 
 <h1>About Me</h1>
 <div class="m-section o-about-me">
@@ -65,6 +69,10 @@
 					--spacing: min(0.5vw, 0.3rem);
 				}
 			}
+		}
+
+		.projects-link {
+			margin: 0 auto;
 		}
 
 		.o-about-me {

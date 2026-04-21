@@ -9,13 +9,14 @@
 	}
 	let { data }: Props = $props();
 
+	function projectKey(value: string) {
+		return value === 'Ongoing' ? new Date().getFullYear() : Number(value);
+	}
+
 	const projectList = $derived(data as Record<string, IProject[]>);
 	const projectKeys = $derived(
-		Object.keys(projectList).sort((a, b) => {
-			if (Number(a) < Number(b)) {
-				return 1;
-			}
-			return -1;
+		Object.keys(projectList).sort((left, right) => {
+			return projectKey(left) < projectKey(right) ? 1 : -1;
 		})
 	);
 
