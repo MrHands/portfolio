@@ -4,17 +4,23 @@
 	import type { IBreadcrumb, IProject } from '$lib';
 	import Footer from '$widgets/organisms/Footer.svelte';
 	import Header from '$widgets/organisms/Header.svelte';
+	import { resolve } from '$app/paths';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	const projectList = data as Record<string, IProject[]>;
+	let { data }: Props = $props();
 
-	const projectKeys = Object.keys(projectList).sort((a, b) => {
-		if (Number(a) < Number(b)) {
-			return 1;
-		}
-		return -1;
-	});
+	const projectList = $derived(data as Record<string, IProject[]>);
+	const projectKeys = $derived(
+		Object.keys(projectList).sort((a, b) => {
+			if (Number(a) < Number(b)) {
+				return 1;
+			}
+			return -1;
+		})
+	);
 
 	const breadcrumbs: IBreadcrumb[] = [
 		{ url: '/', title: 'Home' },
@@ -29,11 +35,11 @@
 <Header {breadcrumbs}></Header>
 
 <section class="o-project-list">
-	{#each projectKeys as key}
+	{#each projectKeys as key (key)}
 		<div class="o-project-list__entry">
 			<h2 class="o-project-list__title">{key}</h2>
-			{#each projectList[key] as project}
-				<a class="o-project-list__link" href={`/projects/${project.id}`}>
+			{#each projectList[key] as project (project.id)}
+				<a class="o-project-list__link" href={resolve(`/projects/${project.id}`)}>
 					{project.title}
 				</a>
 			{/each}

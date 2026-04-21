@@ -1,12 +1,13 @@
 <script lang="ts">
-	import SvelteMarkdown from 'svelte-markdown';
-	import { marked } from 'marked';
+	import SvelteMarkdown from '@humanspeak/svelte-markdown';
+	import { type TokensList } from 'marked';
 	import { ImagePreview } from '$widgets';
 
-	export let content: string | marked.TokensList = '';
-
-	let className = '';
-	export { className as class };
+	interface Props {
+		content?: string | TokensList;
+		class?: string;
+	}
+	let { content = '', class: className = '' }: Props = $props();
 </script>
 
 <section class={['m-section', className].join(' ')}>

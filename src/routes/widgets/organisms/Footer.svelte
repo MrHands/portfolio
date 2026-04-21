@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { Email, SocialItem } from '$widgets';
 
+	interface Props {
+		class?: string;
+	}
+	let { class: className = '' }: Props = $props();
+
 	function getClassNames(name: string) {
 		const combined = ['o-footer'];
 		combined.push(name);
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
 <footer class={getClassNames(className)}>

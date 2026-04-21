@@ -8,23 +8,30 @@
 	import type { PageData } from './$types';
 	import type { IBreadcrumb, IProject } from '$lib';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	const project = data as unknown as IProject;
+	let { data }: Props = $props();
 
-	const breadcrumbs: IBreadcrumb[] = [
+	const project = $derived(data as unknown as IProject);
+	const source = $derived(data.source);
+
+	const breadcrumbs: IBreadcrumb[] = $derived([
 		{ url: '/', title: 'Home' },
 		{ url: '/projects-by-date', title: 'Projects' },
 		{ url: `/projects/${project.id}`, title: project.title }
-	];
+	]);
 
-	const tokens = marked.lexer(data.source);
-	marked.walkTokens(tokens, (token) => {
-		if (token.type == 'heading') {
-			token.depth = 3;
-		} else if (token.type == 'image') {
-			token.href = `../media/screenshots/${token.href}`;
-		}
+	const tokens = $derived(marked.lexer(source));
+	$effect(() => {
+		marked.walkTokens(tokens, (token) => {
+			if (token.type == 'heading') {
+				token.depth = 3;
+			} else if (token.type == 'image') {
+				token.href = `../media/screenshots/${token.href}`;
+			}
+		});
 	});
 </script>
 

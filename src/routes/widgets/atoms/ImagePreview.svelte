@@ -1,15 +1,20 @@
 <script lang="ts">
-	export let href = '';
-	export let title = '';
-	export let text = '';
+	interface Props {
+		href?: string;
+		title?: string;
+		text?: string;
+		class?: string;
+	}
+	let { href = '', title = '', text = '', class: className = '' }: Props = $props();
 
-	let imageTitle = title.replace(/&quot;/g, '"');
+	let imageTitle = $derived(title.replace(/&quot;/g, '"'));
 
 	interface IImageProperties {
 		orientation: 'left' | 'right';
 	}
-	const properties: IImageProperties =
-		imageTitle !== '' ? JSON.parse(imageTitle) : { orientation: 'left' };
+	const properties: IImageProperties = $derived(
+		imageTitle !== '' ? JSON.parse(imageTitle) : { orientation: 'left' }
+	);
 
 	function getClassNames(name: string) {
 		const combined = ['a-image-preview'];
@@ -18,9 +23,6 @@
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
 <div class={getClassNames(className)}>

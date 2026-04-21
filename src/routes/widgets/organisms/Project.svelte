@@ -1,13 +1,15 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { type IProject } from '$lib';
 
-	export let project: IProject;
-
-	let className = '';
-	export { className as class };
+	interface Props {
+		project: IProject;
+		class?: string;
+	}
+	let { project, class: className = '' }: Props = $props();
 </script>
 
-<a class={['o-project', className].join(' ')} href="projects/{project.id}">
+<a class={['o-project', className].join(' ')} href={resolve(`/projects/${project.id}`)}>
 	<div
 		class="o-project__preview"
 		style="background-image: url('./media/previews/{project.trailer.image}')"

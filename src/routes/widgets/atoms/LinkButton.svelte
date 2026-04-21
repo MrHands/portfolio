@@ -1,9 +1,13 @@
 <script lang="ts">
-	export let text: string;
-	export let url: string;
+	/* eslint-disable svelte/no-navigation-without-resolve */
 
-	let className = '';
-	export { className as class };
+	interface Props {
+		text: string;
+		url: string;
+		class?: string;
+	}
+
+	let { text, url, class: className = '' }: Props = $props();
 </script>
 
 <a class={['a-button', className].join(' ')} href={url}>

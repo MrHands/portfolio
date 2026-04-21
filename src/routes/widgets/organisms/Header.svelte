@@ -1,12 +1,18 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-navigation-without-resolve */
+
 	import type { IBreadcrumb } from '$lib';
 
-	export let breadcrumbs: IBreadcrumb[] = [];
+	interface Props {
+		breadcrumbs?: IBreadcrumb[];
+		class?: string;
+	}
+	let { breadcrumbs = [], class: className = '' }: Props = $props();
 
-	const breadcrumbsBefore: IBreadcrumb[] = breadcrumbs.length > 1 ? breadcrumbs.slice(0, -1) : [];
-
-	const breadcrumbLast: IBreadcrumb =
-		breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1] : { url: '', title: '' };
+	const breadcrumbsBefore = $derived(breadcrumbs.length > 1 ? breadcrumbs.slice(0, -1) : []);
+	const breadcrumbLast = $derived(
+		breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1] : { url: '', title: '' }
+	);
 
 	function getClassNames(name: string) {
 		const combined = ['o-home-header'];
@@ -17,9 +23,6 @@
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
 <header class={getClassNames(className)}>
@@ -33,7 +36,7 @@
 			</div>
 		{:else}
 			<div class="o-home-header__breadcrumbs">
-				{#each breadcrumbsBefore as b}
+				{#each breadcrumbsBefore as b (b.url)}
 					<a class="o-home-header__breadcrumbs__item" href={b.url}>{b.title}</a>
 					<div class="o-home-header__breadcrumbs__item">/</div>
 				{/each}

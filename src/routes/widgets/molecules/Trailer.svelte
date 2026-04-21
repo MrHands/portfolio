@@ -1,10 +1,14 @@
 <script lang="ts">
 	import type { ITrailer } from '$lib';
 
-	export let trailer: ITrailer;
-	export let title: string;
+	interface Props {
+		trailer: ITrailer;
+		title: string;
+		class?: string;
+	}
+	let { trailer, title, class: className = '' }: Props = $props();
 
-	const link = trailer.link ?? '';
+	const link = $derived(trailer.link ?? '');
 
 	function getClassNames(name: string) {
 		const combined = ['m-trailer'];
@@ -12,9 +16,6 @@
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
 <div class={getClassNames(className)}>

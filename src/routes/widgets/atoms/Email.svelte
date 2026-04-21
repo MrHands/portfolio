@@ -1,7 +1,11 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-at-html-tags */
 
-	export let email: string;
+	interface Props {
+		email: string;
+		class?: string;
+	}
+	let { email, class: className = '' }: Props = $props();
 
 	function getClassNames(name: string) {
 		const combined = ['a-email'];
@@ -9,9 +13,6 @@
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
 <a href={`mailto:${email}`} class={getClassNames(className)}>

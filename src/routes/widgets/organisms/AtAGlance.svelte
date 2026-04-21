@@ -38,45 +38,47 @@
 <style lang="scss">
 	@use '$styles/globals' as *;
 
-	.o-glance {
-		@include text-sans-serif('M');
+	:global {
+		.o-glance {
+			@include text-sans-serif('M');
 
-		display: grid;
-		grid-template-areas:
-			'table    table      table'
-			'.        download   .    ';
-		row-gap: 12px;
-		padding: 12px 6vw;
-		margin: 0 auto;
-		border: 2px solid get-shade($clr-highlight, 500);
+			display: grid;
+			grid-template-areas:
+				'table    table      table'
+				'.        download   .    ';
+			row-gap: 12px;
+			padding: 12px 6vw;
+			margin: 0 auto;
+			border: 2px solid get-shade($clr-highlight, 500);
 
-		&__table {
-			grid-area: table;
-			width: 100%;
-			border-spacing: 0;
-			border-collapse: collapse;
-			background: transparent;
+			&__table {
+				grid-area: table;
+				width: 100%;
+				border-spacing: 0;
+				border-collapse: collapse;
+				background: transparent;
 
-			@include text-size('M');
+				@include text-size('M');
 
-			tr {
-				display: grid;
-				grid-template-columns: 1fr 2fr;
-				column-gap: 24px;
-				align-content: center;
-				height: 32px;
+				tr {
+					display: grid;
+					grid-template-columns: 1fr 2fr;
+					column-gap: 24px;
+					align-content: center;
+					height: 32px;
 
-				> td:first-child {
-					display: flex;
-					justify-content: flex-end;
-					font-weight: bold;
-					text-transform: uppercase;
+					> td:first-child {
+						display: flex;
+						justify-content: flex-end;
+						font-weight: bold;
+						text-transform: uppercase;
+					}
 				}
 			}
-		}
 
-		:global(&__download) {
-			grid-area: download;
+			&__download {
+				grid-area: download;
+			}
 		}
 	}
 

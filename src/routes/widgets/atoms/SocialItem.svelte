@@ -1,6 +1,12 @@
 <script lang="ts">
-	export let logo: 'twitter' | 'linkedin' = 'linkedin';
-	export let href = '';
+	/* eslint-disable svelte/no-navigation-without-resolve */
+
+	interface Props {
+		logo?: 'twitter' | 'linkedin';
+		href?: string;
+		class?: string;
+	}
+	let { logo = 'linkedin', href = '', class: className = '' }: Props = $props();
 
 	function getClassNames(name: string) {
 		const combined = ['a-social-item'];
@@ -9,12 +15,9 @@
 
 		return combined.join(' ');
 	}
-
-	let className = '';
-	export { className as class };
 </script>
 
-<a class={getClassNames(className)} {href} target="_blank">
+<a class={getClassNames(className)} {href} target="_blank" title={logo}>
 	<div class="a-social-item__logo"></div>
 </a>
 <div class={getClassNames(className)}></div>

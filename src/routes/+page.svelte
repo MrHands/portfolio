@@ -2,13 +2,14 @@
 	import '$styles/toolkit.scss';
 
 	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
-
+	import type { PageData } from './$types';
 	import intro from '../intro.md?raw';
 	import aboutMe from '../about_me.md?raw';
 
-	import type { PageData } from './$types';
-
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -24,7 +25,7 @@
 
 <h1>Projects</h1>
 <div class="o-project-list">
-	{#each data.projects as p}
+	{#each data.projects as p (p.id)}
 		<Project project={p}></Project>
 	{/each}
 </div>
@@ -68,23 +69,25 @@
 
 	// About me
 
-	.o-about-me {
-		display: grid !important;
-		grid-template-columns: 1fr 4fr;
-		gap: 1rem;
-		justify-content: center;
+	:global {
+		.o-about-me {
+			display: grid !important;
+			grid-template-columns: 1fr 4fr;
+			gap: 1rem;
+			justify-content: center;
 
-		:global(&__image) {
-			aspect-ratio: 3 / 12;
-			background: url('/media/images/quinten-and-lydia.webp');
-			background-repeat: no-repeat;
-			background-position-y: center;
-			background-size: contain;
-		}
+			&__image {
+				aspect-ratio: 3 / 12;
+				background: url('/media/images/quinten-and-lydia.webp');
+				background-repeat: no-repeat;
+				background-position-y: center;
+				background-size: contain;
+			}
 
-		:global(&__text) {
-			padding: 0 !important;
-			margin: 0 !important;
+			&__text {
+				padding: 0 !important;
+				margin: 0 !important;
+			}
 		}
 	}
 </style>
