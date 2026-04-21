@@ -3,15 +3,15 @@
 	"brief": {
 		"role": "Contractor",
 		"type": "aaa",
-		"description": "",
-		"released": "2025-07-01",
-		"employer": "iec",
+		"description": "Provided implementation and tech support on UI features",
+		"employer": "guerilla",
 		"platforms": [ "steam", "windows" ],
 		"technologies": [ "c++" ],
 		"stack": [ "Decima Engine" ]
 	},
 	"trailer": {
-		"image": "hug.webp"
+		"image": "hug.jpg",
+		"link": "yt://Wi_kz4MDG1o"
 	},
 	"source": "hug.md"
 }
