@@ -3,7 +3,7 @@
 	"brief": {
 		"type": "aaa",
 		"role": "Systems Programmer",
-		"description": "As a Systems Programmer, I ensured the Steam version worked well with mouse and keyboard and integrated Razer Chroma features.",
+		"description": "Implement keyboard and mouse controls on PC and integrated Razer Chroma features",
 		"released": "2016-01-26",
 		"employer": "nixxes",
 		"platforms": [ "windows", "steam", "uwp" ],
