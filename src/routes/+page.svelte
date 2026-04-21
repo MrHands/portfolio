@@ -14,6 +14,7 @@
 
 	const { projects, images } = $derived(data);
 
+	let duration = $state(8000);
 	let index = $state(0);
 </script>
 
@@ -29,7 +30,7 @@
 <AtAGlance></AtAGlance>
 
 <h1>Recent Projects</h1>
-<Carousel class="carousel" {images} bind:index duration={8000}>
+<Carousel class="carousel" {images} bind:index {duration}>
 	<Controls />
 	{#snippet slide({ index })}
 		<Project project={projects[index]}></Project>
@@ -52,12 +53,17 @@
 		.carousel {
 			height: 100%;
 			margin: 0 6vw;
+			overflow: initial;
 
 			&__indicators {
 				position: absolute;
 				top: 1rem;
 				bottom: initial;
 				gap: 1rem;
+
+				> * {
+					--spacing: min(0.5vw, 0.3rem);
+				}
 			}
 		}
 

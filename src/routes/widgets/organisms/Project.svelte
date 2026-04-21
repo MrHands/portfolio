@@ -38,7 +38,7 @@
 			'desc     ';
 		grid-template-rows:
 			min-content
-			min-content;
+			64px;
 		grid-template-columns: 1fr;
 		row-gap: 0.5rem;
 		color: initial;
@@ -110,6 +110,26 @@
 			font-weight: normal;
 			color: get-shade($clr-highlight, 400);
 			text-transform: uppercase;
+
+			@include size-medium {
+				@include text-size('s');
+			}
+
+			@include size-small {
+				@include text-size('s');
+			}
+		}
+
+		&__role {
+			color: get-shade($clr-highlight, 300);
+
+			@include size-medium {
+				@include text-size('s');
+			}
+
+			@include size-small {
+				@include text-size('s');
+			}
 		}
 
 		&__description {
@@ -134,7 +154,7 @@
 				@include text-size('m');
 			}
 
-			&__company {
+			&__role {
 				@include text-size('s');
 			}
 
@@ -148,10 +168,6 @@
 		.o-project {
 			&__header {
 				@include text-size('m');
-			}
-
-			&__company {
-				@include text-size('s');
 			}
 		}
 	}
