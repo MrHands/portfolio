@@ -1,7 +1,9 @@
 <script lang="ts">
 	import '$styles/toolkit.scss';
 
-	import { Carousel, Controls, CarouselIndicators } from 'flowbite-svelte';
+	import Carousel from 'flowbite-svelte/Carousel.svelte';
+	import Controls from 'flowbite-svelte/Controls.svelte';
+	import CarouselIndicators from 'flowbite-svelte/CarouselIndicators.svelte';
 
 	import { resolve } from '$app/paths';
 	import { AtAGlance, Footer, Header, Project, Section } from '$widgets';
