@@ -1,7 +1,9 @@
 <script lang="ts">
 	/* eslint-disable svelte/no-navigation-without-resolve */
 
+	import { createTimeline } from 'animejs';
 	import type { IBreadcrumb } from '$lib';
+	import { onMount } from 'svelte';
 
 	interface IProps {
 		breadcrumbs?: IBreadcrumb[];
@@ -14,7 +16,22 @@
 		breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1] : { url: '', title: '' }
 	);
 
-	const words = $state(['user interfaces', 'games', 'experiences']);
+	const words = $state(['games', 'experiences', 'user interfaces']);
+	const lastWord = $derived(words[words.length - 1]);
+
+	onMount(() => {
+		const tl = createTimeline();
+
+		const distance = -1.3;
+
+		for (let i = 1; i < words.length; ++i) {
+			tl.add('.o-home-header__words__list', {
+				delay: 800,
+				duration: 400,
+				translateY: `${distance * i}em`
+			});
+		}
+	});
 
 	let classList = $derived(() => {
 		const resolved = ['o-home-header'];
@@ -37,9 +54,12 @@
 				<p>My name is <em>Quinten Lansu</em></p>
 				<p>
 					and I build <span class="o-home-header__words">
-						{#each words as w (w)}
-							<em>{w}</em>
-						{/each}
+						<span class="o-home-header__words__list">
+							{#each words as w (w)}
+								<em>{w}</em>
+							{/each}
+							<em class="o-home-header__words__last">{lastWord}</em>
+						</span>
 					</span>
 				</p>
 			</div>
@@ -142,9 +162,20 @@
 
 		&__words {
 			display: inline-flex;
-			flex-direction: column;
-			max-height: 1.25em;
+			max-height: 1.3em;
 			overflow: hidden;
+
+			&__list {
+				display: inline-flex;
+				flex-direction: column;
+			}
+
+			&__last {
+				position: relative;
+				top: -1.3em;
+				color: get-shade($clr-highlight, 500);
+				background: white;
+			}
 		}
 	}
 
