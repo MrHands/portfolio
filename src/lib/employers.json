@@ -3,8 +3,22 @@
 		"iec": {
 			"name": "Something Mighty GmbH",
 			"location": "Berlin, Germany",
-			"function": "Prinicpal UI Programmer",
+			"function": "Prinicipal UI Programmer",
 			"serviceStart": "2021-10"
+		},
+		"guerilla": {
+			"name": "Guerilla BV",
+			"location": "Amsterdam, the Netherlands",
+			"function": "Contractor",
+			"serviceStart": "2024-09",
+			"serviceEnd": "2025-07"
+		},
+		"avalanche": {
+			"name": "Avalance Studios",
+			"location": "Stockholm, Sweden",
+			"function": "Senior UI Programmer",
+			"serviceStart": "2021-12",
+			"serviceEnd": "2024-08"
 		},
 		"mpg": {
 			"name": "The Multiplayer Guys",
@@ -26,13 +40,6 @@
 			"function": "Senior UI Developer",
 			"serviceStart": "2016-06",
 			"serviceEnd": "2018-02"
-		},
-		"guerilla": {
-			"name": "Guerilla BV",
-			"location": "Amsterdam, the Netherlands",
-			"function": "Contractor",
-			"serviceStart": "2024-12",
-			"serviceEnd": "2025-07"
 		},
 		"nixxes": {
 			"name": "Nixxes Software BV",

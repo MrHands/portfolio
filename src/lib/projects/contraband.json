@@ -1,12 +1,12 @@
 {
 	"title": "Contraband",
 	"brief": {
-		"description": "As the Principal UI Programmer, I designed and built a high-performance widget framework for my client and streamlined their UI development practices.",
+		"description": "Built a high-performance widget framework and optimized UI workflows",
 		"released": "2024-01-01",
-		"employer": "iec",
+		"employer": "avalanche",
 		"platforms": [ "steam", "windows" ],
 		"technologies": [ "coherent", "c++", "ts", "js" ],
-		"role": "Principal UI Programmer",
+		"role": "Senior UI Programmer",
 		"type": "aaa",
 		"stack": [ "Apex Engine", "Coherent Gameface" ]
 	},
