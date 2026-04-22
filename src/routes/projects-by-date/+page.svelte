@@ -48,21 +48,40 @@
 <style lang="scss">
 	@use '$styles/globals' as *;
 
-	.projects-by-date {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		padding: 0 2vw;
-
-		&__entry {
+	:global {
+		.projects-by-date {
 			display: flex;
 			flex-direction: column;
-			gap: 0.25rem;
-		}
+			gap: 1rem;
+			padding: 0 2vw;
 
-		&__title {
-			margin-bottom: 0.5rem;
-			border-bottom: 1px solid get-shade($clr-highlight, 500);
+			&__entry {
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
+			}
+
+			&__title {
+				margin-bottom: 0.5rem;
+				border-bottom: 1px solid get-shade($clr-highlight, 500);
+			}
+
+			&__list {
+				display: flex;
+				padding: 0 6vw;
+
+				@include size-large {
+					align-self: center;
+					width: 70vw;
+					padding: 0;
+				}
+
+				@include size-huge {
+					align-self: center;
+					width: 70vw;
+					padding: 0;
+				}
+			}
 		}
 	}
 </style>

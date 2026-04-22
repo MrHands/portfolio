@@ -166,6 +166,18 @@
 			margin: 0 6vw;
 			overflow: initial;
 
+			@include size-large {
+				justify-self: center;
+				width: 70vw;
+				margin: 0;
+			}
+
+			@include size-huge {
+				justify-self: center;
+				width: 70vw;
+				margin: 0;
+			}
+
 			&:has([data-animating='true']) > img {
 				$offset: 1rem;
 
