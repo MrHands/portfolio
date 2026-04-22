@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { type IProject } from '$lib';
+	import { GetPreviewImage } from '$lib/helpers';
 	import { ProjectInfo } from '$widgets';
 	import LockSolid from 'flowbite-svelte-icons/LockSolid.svelte';
 
@@ -10,7 +11,7 @@
 	}
 	let { project, class: className = '' }: Props = $props();
 
-	const trailerImage = $derived(`./media/previews/${project.trailer.image}`);
+	const trailerImage = $derived(GetPreviewImage(project.trailer.image));
 	const isLocked = $derived(project.locked ?? false);
 
 	let classList = $derived(() => {
