@@ -26,19 +26,19 @@
 	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
 	let scrollDuration = $state(8000);
 
-	const animeScroll = (node: HTMLElement, { direction = 1, duration = 6000 }) => {
+	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
 		const xOffset = 100 * direction;
 		return {
 			duration,
 			tick: (t: number) => {
-				if (t !== 0) {
+				if (t !== 0 && t !== 1) {
 					return;
 				}
 
 				console.log('dir', direction);
 
 				const params: AnimationParams = {
-					easing: 'easeOutQuart',
+					easing: 'easeInQuart',
 					duration,
 					onComplete: () => {
 						delete eleCarousel?.dataset.animating;
@@ -74,7 +74,7 @@
 		console.log('index', index, 'last', lastIndex, 'dir', params.direction);
 		const t = animeScroll(node, {
 			direction: params.direction,
-			duration: 7000
+			duration: 700
 		});
 		lastIndex = index;
 		return t;
@@ -101,6 +101,7 @@
 				<Project project={projects[index]} />
 			</div>
 		{/key}
+		<div class="carousel__viewport__hide"></div>
 	</div>
 	<CarouselIndicators class="carousel__indicators" />
 </Carousel>
@@ -126,10 +127,40 @@
 			margin: 0 6vw;
 			overflow: initial;
 
+			&:has([data-animating='true']) > img {
+				$offset: 1rem;
+
+				top: -0.25rem;
+				left: $offset;
+				z-index: 100;
+				width: calc(100% - #{$offset * 2});
+				height: calc(100% - #{$offset * 2});
+				border-radius: 1rem;
+			}
+
 			&__viewport {
+				$this: &;
+
 				position: relative;
 				width: 100%;
-				aspect-ratio: 16/9;
+				aspect-ratio: 15/9;
+
+				&__hide {
+					position: absolute;
+					inset: 0;
+					z-index: 120;
+					display: none;
+					background: linear-gradient(
+						transparent 0%,
+						rgb(white, 0%) 40%,
+						rgb(white, 70%) 75%,
+						rgb(white, 100%) 100%
+					);
+
+					#{$this}[data-animating='true'] & {
+						display: block;
+					}
+				}
 			}
 
 			&__slide {
