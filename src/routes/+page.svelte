@@ -20,6 +20,13 @@
 
 	const { projects, images } = $derived(data);
 
+	const portfolio = {
+		url: 'https://qlansu.nl',
+		title: "Quinten's Portfolio",
+		description: 'Public portfolio for Quinten Lansu, a game developer and UI programmer',
+		preview: 'og-preview.png'
+	};
+
 	let eleCarousel: HTMLElement | null = $state(null);
 	let index = $state(0);
 	let lastIndex = $state(0);
@@ -85,7 +92,19 @@
 </script>
 
 <svelte:head>
-	<title>Quinten Lansu - Portfolio</title>
+	<title>{portfolio.title}</title>
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={portfolio.url} />
+	<meta property="og:title" content={portfolio.title} />
+	<meta property="og:description" content={portfolio.description} />
+	<meta property="og:image" content={portfolio.preview} />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:title" content={portfolio.title} />
+	<meta property="twitter:description" content={portfolio.description} />
+	<meta property="twitter:image" content={portfolio.preview} />
+
 	{#each images as image (image.src)}
 		<link rel="preload" as="image" href={image.src} type="image/webp" />
 	{/each}
