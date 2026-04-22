@@ -19,12 +19,15 @@
 
 	const { projects, images } = $derived(data);
 
-	let duration = $state(8000);
+	let duration = $state(10000);
 	let index = $state(0);
 </script>
 
 <svelte:head>
 	<title>Quinten Lansu - Portfolio</title>
+	{#each images.slice(0, 2) as image (image.src)}
+		<link rel="preload" as="image" href={image.src} type="image/webp" />
+	{/each}
 </svelte:head>
 
 <Header></Header>

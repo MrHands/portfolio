@@ -9,7 +9,7 @@ export const load: PageServerLoad = async () => {
 
 	const images = projects.map((it) => {
 		return {
-			src: `/media/previews/${it.trailer.image}`,
+			src: `/media/previews/${it.trailer.image}?format=webp&metadata`,
 			alt: it.title,
 			title: it.title,
 			project: it
