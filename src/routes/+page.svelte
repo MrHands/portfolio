@@ -32,6 +32,7 @@
 	let lastIndex = $state(0);
 	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
 	let scrollDuration = $state(8000);
+	const useSlideTransition = false;
 	let isAnimating = $state(false);
 
 	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
@@ -70,7 +71,8 @@
 			}
 		};
 	};
-	const transition = (node: HTMLElement, params: { direction: number }) => {
+
+	const slideTransition = (node: HTMLElement, params: { direction: number }) => {
 		if (!eleCarousel || eleCarousel.dataset.animating) {
 			return {
 				duration: 0,
@@ -89,6 +91,13 @@
 		lastIndex = index;
 		return t;
 	};
+	const noneTransition = () => {
+		return {
+			duration: 0,
+			tick: () => {}
+		};
+	};
+	const transition = useSlideTransition ? slideTransition : noneTransition;
 </script>
 
 <svelte:head>
@@ -115,7 +124,15 @@
 <Section content={intro}></Section>
 
 <h1>Projects I've worked on</h1>
-<Carousel class="carousel" {images} bind:index duration={scrollDuration}>
+<Carousel
+	class="carousel"
+	{images}
+	bind:index
+	duration={scrollDuration}
+	transition={!useSlideTransition
+		? (node) => transition(node, { direction: scrollDirection })
+		: undefined}
+>
 	<Controls />
 	<div class="carousel__viewport" bind:this={eleCarousel}>
 		{#key index}
