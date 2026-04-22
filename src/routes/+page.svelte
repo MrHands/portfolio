@@ -165,6 +165,7 @@
 			height: 100%;
 			aspect-ratio: 609/400;
 			margin: 0 6vw;
+			overflow: initial;
 
 			@include size-large {
 				justify-self: center;
