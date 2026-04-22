@@ -11,7 +11,7 @@
 	import aboutMe from '$lib/about_me.md?raw';
 
 	import type { PageData } from './$types';
-	import { animate } from 'animejs';
+	import { animate, type AnimationParams } from 'animejs';
 
 	interface Props {
 		data: PageData;
@@ -20,44 +20,61 @@
 
 	const { projects, images } = $derived(data);
 
+	let eleCarousel: HTMLElement | null = $state(null);
 	let index = $state(0);
-	let lastIndex = $derived(index);
+	let lastIndex = $state(0);
 	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
-
 	let scrollDuration = $state(8000);
-	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
+
+	const animeScroll = (node: HTMLElement, { direction = 1, duration = 6000 }) => {
 		const xOffset = 100 * direction;
-		console.log(xOffset);
 		return {
 			duration,
-			tick: (t: number, u: number) => {
-				if (t === 0 && !node.dataset.animating) {
-					node.dataset.animating = 'true';
+			tick: (t: number) => {
+				if (t !== 0) {
+					return;
+				}
+
+				console.log('dir', direction);
+
+				const params: AnimationParams = {
+					easing: 'easeOutQuart',
+					duration,
+					onComplete: () => {
+						delete eleCarousel?.dataset.animating;
+					}
+				};
+
+				if (direction === 1) {
 					animate(node, {
+						...params,
 						translateX: [`${xOffset}%`, '0%'],
-						opacity: [0, 1],
-						easing: 'easeOutQuart',
-						duration: duration,
-						onComplete: () => delete node.dataset.animating
+						opacity: [0, 1]
 					});
-				} else if (u === 1 && !node.dataset.animating) {
-					node.dataset.animating = 'true';
+				} else {
 					animate(node, {
+						...params,
 						translateX: ['0%', `-${xOffset}%`],
-						opacity: [1, 0],
-						easing: 'easeOutQuart',
-						duration: duration,
-						onComplete: () => delete node.dataset.animating
+						opacity: [1, 0]
 					});
 				}
 			}
 		};
 	};
 	const transition = (node: HTMLElement, params: { direction: number }) => {
+		if (!eleCarousel || eleCarousel.dataset.animating) {
+			return {
+				duration: 0,
+				tick: () => {}
+			};
+		}
+
+		eleCarousel.dataset.animating = 'true';
+
 		console.log('index', index, 'last', lastIndex, 'dir', params.direction);
 		const t = animeScroll(node, {
 			direction: params.direction,
-			duration: 700
+			duration: 7000
 		});
 		lastIndex = index;
 		return t;
@@ -78,7 +95,7 @@
 <h1>Projects I've worked on</h1>
 <Carousel class="carousel" {images} bind:index duration={scrollDuration}>
 	<Controls />
-	<div class="carousel__viewport">
+	<div class="carousel__viewport" bind:this={eleCarousel}>
 		{#key index}
 			<div class="carousel__slide" transition:transition={{ direction: scrollDirection }}>
 				<Project project={projects[index]} />
@@ -113,7 +130,6 @@
 				position: relative;
 				width: 100%;
 				aspect-ratio: 16/9;
-				overflow: hidden;
 			}
 
 			&__slide {
