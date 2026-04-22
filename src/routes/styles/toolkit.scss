@@ -11,6 +11,7 @@ body {
 	display: grid;
 	row-gap: $body-gap;
 	margin: 0;
+	overflow-x: hidden;
 	// stylelint-disable-next-line number-max-precision
 	line-height: 1.42857143;
 }
