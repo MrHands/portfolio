@@ -25,6 +25,7 @@
 	let lastIndex = $state(0);
 	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
 	let scrollDuration = $state(8000);
+	let isAnimating = $state(false);
 
 	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
 		const xOffset = 100 * direction;
@@ -41,6 +42,7 @@
 					easing: 'easeInQuart',
 					duration,
 					onComplete: () => {
+						isAnimating = false;
 						delete eleCarousel?.dataset.animating;
 					}
 				};
@@ -69,6 +71,7 @@
 			};
 		}
 
+		isAnimating = true;
 		eleCarousel.dataset.animating = 'true';
 
 		console.log('index', index, 'last', lastIndex, 'dir', params.direction);
@@ -98,7 +101,7 @@
 	<div class="carousel__viewport" bind:this={eleCarousel}>
 		{#key index}
 			<div class="carousel__slide" transition:transition={{ direction: scrollDirection }}>
-				<Project project={projects[index]} />
+				<Project project={projects[index]} noPreview={isAnimating} />
 			</div>
 		{/key}
 		<div class="carousel__viewport__hide"></div>
@@ -130,7 +133,7 @@
 			&:has([data-animating='true']) > img {
 				$offset: 1rem;
 
-				top: -0.25rem;
+				top: 0;
 				left: $offset;
 				z-index: 100;
 				width: calc(100% - #{$offset * 2});

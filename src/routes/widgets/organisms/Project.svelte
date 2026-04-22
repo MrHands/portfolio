@@ -8,8 +8,9 @@
 	interface Props {
 		project: IProject;
 		class?: string;
+		noPreview?: boolean;
 	}
-	let { project, class: className = '' }: Props = $props();
+	let { project, class: className = '', noPreview = false }: Props = $props();
 
 	const trailerImage = $derived(GetPreviewImage(project.trailer.image));
 	const isLocked = $derived(project.locked ?? false);
@@ -18,6 +19,9 @@
 		const resolved = ['o-project'];
 		if (className) {
 			resolved.push(className);
+		}
+		if (noPreview) {
+			resolved.push('o-project--no-preview');
 		}
 		if (isLocked) {
 			resolved.push('o-project--locked');
@@ -37,13 +41,16 @@
 	</div>
 {:else}
 	<a class={classList().join(' ')} href={resolve(`/projects/${project.id}`)}>
-		<div class="o-project__preview" style="background-image: url({trailerImage})">
-			<div class="o-project__header">
+		<div
+			class="o-project__preview"
+			style:background-image={noPreview ? 'none' : `url(${trailerImage})`}
+		>
+			<div class="o-project__header o-project__appear">
 				<div class="o-project__title">{project.title}</div>
 				<ProjectInfo class="o-project__info" {project}></ProjectInfo>
 			</div>
 		</div>
-		<p class="o-project__description">{project.brief.description}</p>
+		<p class="o-project__description o-project__appear">{project.brief.description}</p>
 	</a>
 {/if}
 
@@ -127,6 +134,10 @@
 						rgb(white, 100%) 100%
 					);
 
+					#{$this}--no-preview & {
+						display: none;
+					}
+
 					#{$this}--locked & {
 						display: none;
 					}
@@ -152,6 +163,15 @@
 				}
 			}
 
+			&__appear {
+				transition: opacity 1s;
+
+				#{$this}--no-preview & {
+					opacity: 0;
+					transition: none;
+				}
+			}
+
 			&__info {
 				display: flex;
 				column-gap: 0.75rem;
@@ -168,9 +188,15 @@
 
 				grid-area: desc;
 				padding: 0 $padding;
+				transition: opacity 1s;
 
 				@include size-small {
 					@include text-size('s');
+				}
+
+				#{$this}--no-preview & {
+					opacity: 0;
+					transition: none;
 				}
 			}
 
