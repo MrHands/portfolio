@@ -24,7 +24,7 @@
 		url: 'https://qlansu.nl',
 		title: "Quinten's Portfolio",
 		description: 'Public portfolio for Quinten Lansu, a game developer and UI programmer',
-		preview: 'og-preview.png'
+		preview: 'https://qlansu.nl/og-preview.png'
 	};
 
 	let eleCarousel: HTMLElement | null = $state(null);
