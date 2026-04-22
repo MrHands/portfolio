@@ -29,7 +29,7 @@
 			if (token.type == 'heading') {
 				token.depth = 3;
 			} else if (token.type == 'image') {
-				token.href = `/media/screenshots/${token.href}`;
+				token.href = `/media/screenshots/${token.href}?format=webp`;
 			}
 		});
 		return lexerTokens;
