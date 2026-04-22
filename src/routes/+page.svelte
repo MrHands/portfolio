@@ -11,6 +11,7 @@
 	import aboutMe from '$lib/about_me.md?raw';
 
 	import type { PageData } from './$types';
+	import { animate } from 'animejs';
 
 	interface Props {
 		data: PageData;
@@ -19,13 +20,45 @@
 
 	const { projects, images } = $derived(data);
 
-	let duration = $state(10000);
 	let index = $state(0);
+	let lastIndex = $state(0);
+	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
+	let scrollDuration = $state(8000);
+	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
+		console.log(node);
+		const xOffset = 100 * direction;
+		return {
+			duration,
+			tick: (t: number, timeExit: number) => {
+				console.log('timeEnter', t, 'timeExit', timeExit);
+				if (t === 0 && !node.dataset.animating) {
+					node.dataset.animating = 'true';
+					animate(node, {
+						translateX: [`${xOffset}%`, '0%'],
+						opacity: [0, 1],
+						easing: 'easeOutQuart',
+						duration: duration,
+						onComplete: () => delete node.dataset.animating
+					});
+				}
+			}
+		};
+	};
+	const transition = (node: HTMLElement) => {
+		console.log(node);
+		const t = animeScroll(node, {
+			direction: scrollDirection,
+			duration: 700
+		});
+		console.log(t);
+		lastIndex = index;
+		return t;
+	};
 </script>
 
 <svelte:head>
 	<title>Quinten Lansu - Portfolio</title>
-	{#each images.slice(0, 2) as image (image.src)}
+	{#each images as image (image.src)}
 		<link rel="preload" as="image" href={image.src} type="image/webp" />
 	{/each}
 </svelte:head>
@@ -35,10 +68,12 @@
 <Section content={intro}></Section>
 
 <h1>Projects I've worked on</h1>
-<Carousel class="carousel" {images} bind:index {duration}>
+<Carousel class="carousel" {images} bind:index duration={scrollDuration} {transition}>
 	<Controls />
 	{#snippet slide({ index })}
-		<Project project={projects[index]}></Project>
+		<div transition:transition>
+			<Project project={projects[index]}></Project>
+		</div>
 	{/snippet}
 	<CarouselIndicators class="carousel__indicators" />
 </Carousel>

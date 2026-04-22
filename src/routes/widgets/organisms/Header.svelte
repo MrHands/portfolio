@@ -26,7 +26,7 @@
 
 		const distance = -1.3;
 
-		utils.set('.rolodex', {
+		utils.set('.o-home-header__words__last', {
 			'--from': '0%',
 			'--to': '0%'
 		});
