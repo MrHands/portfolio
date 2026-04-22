@@ -163,8 +163,8 @@
 	:global {
 		.carousel {
 			height: 100%;
+			aspect-ratio: 609/400;
 			margin: 0 6vw;
-			overflow: initial;
 
 			@include size-large {
 				justify-self: center;
@@ -178,12 +178,17 @@
 				margin: 0;
 			}
 
+			& > img {
+				display: none;
+			}
+
 			&:has([data-animating='true']) > img {
 				$offset: 1rem;
 
 				top: 0;
 				left: $offset;
 				z-index: 100;
+				display: initial;
 				width: calc(100% - #{$offset * 2});
 				height: calc(100% - #{$offset * 2});
 				border-radius: 1rem;
@@ -194,7 +199,6 @@
 
 				position: relative;
 				width: 100%;
-				aspect-ratio: 15/9;
 
 				&__hide {
 					position: absolute;
