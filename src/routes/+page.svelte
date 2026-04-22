@@ -21,16 +21,16 @@
 	const { projects, images } = $derived(data);
 
 	let index = $state(0);
-	let lastIndex = $state(0);
+	let lastIndex = $derived(index);
 	const scrollDirection = $derived(index >= lastIndex ? 1 : -1);
+
 	let scrollDuration = $state(8000);
 	const animeScroll = (node: HTMLElement, { direction = 1, duration = 600 }) => {
-		console.log(node);
 		const xOffset = 100 * direction;
+		console.log(xOffset);
 		return {
 			duration,
-			tick: (t: number, timeExit: number) => {
-				console.log('timeEnter', t, 'timeExit', timeExit);
+			tick: (t: number, u: number) => {
 				if (t === 0 && !node.dataset.animating) {
 					node.dataset.animating = 'true';
 					animate(node, {
@@ -40,17 +40,25 @@
 						duration: duration,
 						onComplete: () => delete node.dataset.animating
 					});
+				} else if (u === 1 && !node.dataset.animating) {
+					node.dataset.animating = 'true';
+					animate(node, {
+						translateX: ['0%', `-${xOffset}%`],
+						opacity: [1, 0],
+						easing: 'easeOutQuart',
+						duration: duration,
+						onComplete: () => delete node.dataset.animating
+					});
 				}
 			}
 		};
 	};
-	const transition = (node: HTMLElement) => {
-		console.log(node);
+	const transition = (node: HTMLElement, params: { direction: number }) => {
+		console.log('index', index, 'last', lastIndex, 'dir', params.direction);
 		const t = animeScroll(node, {
-			direction: scrollDirection,
+			direction: params.direction,
 			duration: 700
 		});
-		console.log(t);
 		lastIndex = index;
 		return t;
 	};
@@ -68,13 +76,15 @@
 <Section content={intro}></Section>
 
 <h1>Projects I've worked on</h1>
-<Carousel class="carousel" {images} bind:index duration={scrollDuration} {transition}>
+<Carousel class="carousel" {images} bind:index duration={scrollDuration}>
 	<Controls />
-	{#snippet slide({ index })}
-		<div transition:transition>
-			<Project project={projects[index]}></Project>
-		</div>
-	{/snippet}
+	<div class="carousel__viewport">
+		{#key index}
+			<div class="carousel__slide" transition:transition={{ direction: scrollDirection }}>
+				<Project project={projects[index]} />
+			</div>
+		{/key}
+	</div>
 	<CarouselIndicators class="carousel__indicators" />
 </Carousel>
 <a class="projects-link" href={resolve('/projects-by-date')} title="All projects">
@@ -98,6 +108,18 @@
 			height: 100%;
 			margin: 0 6vw;
 			overflow: initial;
+
+			&__viewport {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 16/9;
+				overflow: hidden;
+			}
+
+			&__slide {
+				position: absolute;
+				inset: 0;
+			}
 
 			&__indicators {
 				position: absolute;
