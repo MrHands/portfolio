@@ -20,7 +20,9 @@
 	const lastWord = $derived(words[words.length - 1]);
 
 	onMount(() => {
-		const tl = createTimeline();
+		const tl = createTimeline({
+			loop: true
+		});
 
 		const distance = -1.3;
 
@@ -33,7 +35,8 @@
 			tl.add('.o-home-header__words__list', {
 				delay: 800,
 				duration: 400,
-				translateY: `${distance * i}em`
+				translateY: `${distance * i}em`,
+				ease: 'inOutExpo'
 			});
 		}
 
@@ -61,6 +64,12 @@
 			},
 			'<<'
 		);
+		tl.add('.o-home-header__words__list', {
+			delay: 4000,
+			duration: 400,
+			translateY: 0,
+			ease: 'inOutExpo'
+		});
 	});
 
 	let classList = $derived(() => {
