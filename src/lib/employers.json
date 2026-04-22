@@ -1,55 +1,55 @@
 {
 	"employers": {
 		"iec": {
-			"name": "Something Mighty GmbH",
+			"name": "Something Mighty",
 			"location": "Berlin, Germany",
 			"function": "Prinicipal UI Programmer",
 			"serviceStart": "2021-10"
 		},
 		"guerilla": {
-			"name": "Guerilla BV",
+			"name": "Guerilla",
 			"location": "Amsterdam, the Netherlands",
 			"function": "Contractor",
 			"serviceStart": "2024-09",
 			"serviceEnd": "2025-07"
 		},
 		"avalanche": {
-			"name": "Avalance Studios",
+			"name": "Avalanche Studios",
 			"location": "Stockholm, Sweden",
 			"function": "Senior UI Programmer",
 			"serviceStart": "2021-12",
 			"serviceEnd": "2024-08"
 		},
 		"mpg": {
-			"name": "The Multiplayer Guys",
+			"name": "The Multiplayer Group",
 			"location": "Berlin, Germany",
 			"function": "Senior UI Programmer",
 			"serviceStart": "2021-01",
 			"serviceEnd": "2021-10"
 		},
 		"ubisoft": {
-			"name": "Ubisoft Berlin GmbH",
+			"name": "Ubisoft Berlin",
 			"location": "Berlin, Germany",
 			"function": "Lead UI Programmer",
 			"serviceStart": "2018-03",
 			"serviceEnd": "2021-01"
 		},
 		"bigpoint": {
-			"name": "Bigpoint GmbH",
+			"name": "Bigpoint",
 			"location": "Berlin, Germany",
 			"function": "Senior UI Developer",
 			"serviceStart": "2016-06",
 			"serviceEnd": "2018-02"
 		},
 		"nixxes": {
-			"name": "Nixxes Software BV",
+			"name": "Nixxes Software",
 			"location": "Utrecht, the Netherlands",
 			"function": "Systems Programmer",
 			"serviceStart": "2013-08",
 			"serviceEnd": "2016-05"
 		},
 		"flexposure": {
-			"name": "FlexPosure BV",
+			"name": "FlexPosure",
 			"location": "Tiel, the Netherlands",
 			"function": "Junior Developer",
 			"serviceStart": "2012-10",
@@ -63,14 +63,14 @@
 			"serviceEnd": "2012-09"
 		},
 		"igad": {
-			"name": "NHTV Hogeschool",
+			"name": "NHTV",
 			"location": "Breda, the Netherlands",
 			"function": "Student",
 			"serviceStart": "2008-09",
 			"serviceEnd": "2012-09"
 		},
 		"scripta": {
-			"name": "Scripta Consultancy BV",
+			"name": "Scripta Consultancy",
 			"location": "Rotterdam, the Netherlands",
 			"function": "Web Developer",
 			"serviceStart": "2005-01",
