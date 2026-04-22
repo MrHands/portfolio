@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ITrailer } from '$lib';
+	import { GetPreviewImage } from '$lib/helpers';
 
 	interface Props {
 		trailer: ITrailer;
@@ -29,7 +30,7 @@
 		></iframe>
 	{/if}
 	{#if link === ''}
-		<img class="m-trailer__item" src={`../media/previews/${trailer.image}`} alt={title} />
+		<img class="m-trailer__item" src={GetPreviewImage(trailer.image)} alt={title} />
 	{/if}
 </div>
 

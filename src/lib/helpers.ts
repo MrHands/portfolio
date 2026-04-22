@@ -36,3 +36,19 @@ export async function getProject(id: string) {
 		id
 	};
 }
+
+interface IAssetImage {
+	default?: {
+		src?: string;
+	};
+}
+const PreviewImages = import.meta.glob('$lib/assets/previews/*.{png,jpg,jpeg,webp}', {
+	query: { format: 'webp', as: 'metadata' },
+	eager: true
+}) as Record<string, IAssetImage>;
+
+export function GetPreviewImage(imageId: string) {
+	const assetPath = `/src/lib/assets/previews/${imageId}`;
+	const metadata = PreviewImages[assetPath]?.default;
+	return metadata?.src || `/media/previews/${imageId}`;
+}

@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import type { IProject } from '$lib';
-import { GetFeaturedList, getProject } from '$lib/helpers';
+import { GetFeaturedList, GetPreviewImage, getProject } from '$lib/helpers';
 
 export const load: PageServerLoad = async () => {
 	const featured = await GetFeaturedList();
@@ -9,7 +9,7 @@ export const load: PageServerLoad = async () => {
 
 	const images = projects.map((it) => {
 		return {
-			src: `/media/previews/${it.trailer.image}?format=webp`,
+			src: GetPreviewImage(it.trailer.image),
 			alt: it.title,
 			title: it.title,
 			project: it
