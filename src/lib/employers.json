@@ -6,6 +6,13 @@
 			"function": "Prinicipal UI Programmer",
 			"serviceStart": "2021-10"
 		},
+		"podpeople": {
+			"name": "Pod People",
+			"location": "Los Angeles, California",
+			"function": "Full Stack Developer",
+			"serviceStart": "2026-01",
+			"serviceEnd": "2026-04"
+		},
 		"guerilla": {
 			"name": "Guerilla",
 			"location": "Amsterdam, the Netherlands",
