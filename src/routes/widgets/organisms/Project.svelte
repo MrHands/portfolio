@@ -83,8 +83,13 @@
 			}
 
 			&--locked {
-				display: block;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
 				pointer-events: none;
+				filter: none;
 
 				&:hover {
 					cursor: not-allowed;
@@ -115,8 +120,7 @@
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: 100%;
-				border-top-left-radius: 0.5rem;
-				border-top-right-radius: 0.5rem;
+				border-radius: 0.5rem;
 				transition: background-size 0.4s;
 
 				#{$this}--locked & {
